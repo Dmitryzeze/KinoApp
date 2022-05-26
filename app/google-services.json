@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "963634848852",
+    "project_id": "mycinema-68b67",
+    "storage_bucket": "mycinema-68b67.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963634848852:android:37bb34b21175e33fd239c1",
+        "android_client_info": {
+          "package_name": "com.example.myretrofit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963634848852-gunu5ll5nd019p1053tsbnv6l3qtf0pe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA29xIeigoCOBQlGM-go0fE7EdzCRO7Y54"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963634848852-gunu5ll5nd019p1053tsbnv6l3qtf0pe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
