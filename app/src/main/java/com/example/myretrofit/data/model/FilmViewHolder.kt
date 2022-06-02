@@ -10,7 +10,7 @@ class FilmViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(film: Film): Unit = with(binding) {
         filmNameTextView.text = film.nameRu
-        if (film.posterUrl.isNotBlank()) {
+        if (film.posterUrl != null) {
            Glide.with(photoFilmImageView.context)
                 .load(film.posterUrl)
                 .circleCrop()
