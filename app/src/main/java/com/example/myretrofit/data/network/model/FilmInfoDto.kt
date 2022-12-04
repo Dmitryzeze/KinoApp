@@ -16,9 +16,9 @@ data class FilmInfoDto(
     @SerializedName("filmLength")
     val filmLength: String? = null,
     @SerializedName("countries")
-    val countries: List<CountryDto>? = null,
+    val countries: List<FilmCountryDto>? = null,
     @SerializedName("genres")
-    val genres: List<GenreDto>? = null,
+    val genres: List<FilmGenreDto>? = null,
     @SerializedName("rating")
     val rating: String? = null,
     @SerializedName("ratingVoteCount")
