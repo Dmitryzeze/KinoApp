@@ -1,8 +1,9 @@
-package com.example.myretrofit.data
+package com.example.myretrofit.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.myretrofit.data.FilmRepository
 import com.example.myretrofit.data.model.Film
 import kotlinx.coroutines.Dispatchers
 

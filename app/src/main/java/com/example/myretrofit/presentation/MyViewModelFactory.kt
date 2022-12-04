@@ -1,7 +1,8 @@
-package com.example.myretrofit.data
+package com.example.myretrofit.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.myretrofit.data.FilmRepository
 
 class MyViewModelFactory(private val filmsRepository: FilmRepository): ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")

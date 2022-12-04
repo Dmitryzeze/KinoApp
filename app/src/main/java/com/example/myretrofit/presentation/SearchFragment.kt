@@ -1,4 +1,4 @@
-package com.example.myretrofit
+package com.example.myretrofit.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
