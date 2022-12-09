@@ -5,5 +5,5 @@ import androidx.lifecycle.LiveData
 interface FilmRepository {
     fun getFilmInfoList(): LiveData<List<FilmInfo>>
 
-    fun getFilmInfo(idFilm: Int): LiveData<FilmInfo>
+    suspend fun getFilmInfo(idFilm: Int): FilmInfo
 }

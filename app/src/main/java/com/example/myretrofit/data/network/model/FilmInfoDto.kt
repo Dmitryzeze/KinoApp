@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "full_film_list")
 data class FilmInfoDto(
     @SerializedName("filmId")
-    val filmId: Int?,
+    val filmId: Int,
     @SerializedName("nameRu")
     val nameRu: String?,
     @SerializedName("nameEn")

@@ -3,7 +3,6 @@ package com.example.myretrofit.data.database
 import androidx.lifecycle.LiveData
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
-import androidx.room.PrimaryKey
 import androidx.room.Query
 
 interface FilmInfoDao {

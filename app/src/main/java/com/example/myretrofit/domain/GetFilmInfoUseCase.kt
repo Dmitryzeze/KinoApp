@@ -3,5 +3,5 @@ package com.example.myretrofit.domain
 class GetFilmInfoUseCase(
     private val repository: FilmRepository
 ) {
-    operator fun invoke(idFilm: Int)= repository.getFilmInfo(idFilm)
+    suspend operator fun invoke(idFilm: Int)= repository.getFilmInfo(idFilm)
 }
