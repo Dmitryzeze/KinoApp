@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class FilmInfoDbModel (
     @PrimaryKey
     val id  : Int?,
-    val name : String?,
+    val name : String,
     val releaseYear : String?,
     val genre : List<String?>?,
     val imageUrl : String?,
