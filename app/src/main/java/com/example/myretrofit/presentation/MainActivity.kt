@@ -1,4 +1,4 @@
-package com.example.myretrofit
+package com.example.myretrofit.presentation
 
 import android.os.Bundle
 
@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
 
     }
