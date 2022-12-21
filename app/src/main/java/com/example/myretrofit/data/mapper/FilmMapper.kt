@@ -10,7 +10,7 @@ class FilmMapper {
             id = dto.filmId,
             name = dto.nameRu.orEmpty(),
             releaseYear = dto.year.orEmpty(),
-            genres = dto.genres.orEmpty() as List<String>,
+            //genres = dto.genres,
             imageUrl = dto.posterUrl.orEmpty(),
             ratingKinopoisk = "",
             ratingImdb = ""
@@ -23,7 +23,7 @@ class FilmMapper {
             id = filmInfoDbModel.id,
             name = filmInfoDbModel.name,
             releaseYear = filmInfoDbModel.releaseYear,
-            genres = filmInfoDbModel.genres,
+            //genres = List<String>,
             imageUrl = filmInfoDbModel.releaseYear,
             ratingKinopoisk = filmInfoDbModel.ratingKinopoisk,
             ratingImdb = filmInfoDbModel.ratingImdb

@@ -19,19 +19,7 @@ class SearchFragment : Fragment() {
         val binding = FragmentSearchBinding.inflate(
             inflater, container, false
         )
-        val buttonLike = binding.buttonLike
-        val poster = binding.poster
-        val buttonNext = binding.buttonNext
 
-
-        var count : Int = 300
-        buttonNext.setOnClickListener {
-
-
-
-        }
-        buttonLike.setOnClickListener { }
-        // Inflate the layout for this fragment
         return binding.root
     }
 
