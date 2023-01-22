@@ -9,16 +9,16 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET("top")
-    fun getTopFilmInfoList(
+    suspend fun getTopFilmInfoList(
         @Header(QUERY_PARAM_API_KEY) api_key: String = API_KEY,
         @Query(QUERY_PARAM_TYPE_TOP) type: String = "TOP_250_BEST_FILMS",
         @Query(QUERY_PARAM_PAGE_TOP) page : Int = 1
-        ): Response<FilmContainerDto>
+        ): FilmContainerDto
 
     companion object{
         private const val QUERY_PARAM_TYPE_TOP = "type"
         private const val QUERY_PARAM_PAGE_TOP = "page"
         private const val QUERY_PARAM_API_KEY = "X-API-KEY"
-        private const val API_KEY =""
+        private const val API_KEY ="566b7a18-0645-42de-b410-d8c2f717b660"
     }
 }
