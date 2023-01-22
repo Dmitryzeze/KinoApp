@@ -26,7 +26,8 @@ class FilmRepositoryImpl(application: Application) : FilmRepository {
     }
 
     override suspend fun loadData() {
-        val topFilms = apiService.getTopFilmInfoList()
-
+        val topFilmsListDto = apiService.getTopFilmInfoList()
+        val filmListDb = mapper.mapListDtoModelToListDbModel(topFilmsListDto.films!!)
+        filmListDb.map{filmInfoDao.addFilmInfo(it)}
     }
 }

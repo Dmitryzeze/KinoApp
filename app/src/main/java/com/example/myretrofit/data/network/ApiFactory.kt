@@ -1,6 +1,5 @@
 package com.example.myretrofit.data.network
 
-import android.provider.Telephony.TextBasedSmsColumns.BODY
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -26,5 +25,5 @@ object ApiFactory {
 
 
 
-    val apiService = retrofit.create(ApiService::class.java)
+    val apiService get()= retrofit.create(ApiService::class.java)
 }

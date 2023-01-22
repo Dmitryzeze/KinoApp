@@ -15,10 +15,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-val repository = FilmRepositoryImpl(application)
-        lifecycleScope.launch{
-        repository.loadData()}
-
-
+        val repository = FilmRepositoryImpl(application)
+        lifecycleScope.launch {
+            repository.loadData()
+        }
     }
 }
