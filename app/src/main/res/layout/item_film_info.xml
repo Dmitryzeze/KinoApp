@@ -20,13 +20,14 @@
         android:padding="16dp">
 
         <ImageView
+            android:id="@+id/iv_icon_film"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/ic_film_icon"
             android:contentDescription="@string/film_icon" />
 
         <TextView
-            android:id="@+id/filmNameTextView"
+            android:id="@+id/tv_name_film"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
