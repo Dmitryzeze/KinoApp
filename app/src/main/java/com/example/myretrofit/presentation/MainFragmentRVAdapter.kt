@@ -1,5 +1,6 @@
 package com.example.myretrofit.presentation
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
@@ -16,14 +17,13 @@ class MainFragmentRVAdapter : androidx.recyclerview.widget.ListAdapter<FilmInfo,
         return  MainFragmentRVHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+
 
     override fun onBindViewHolder(holder: MainFragmentRVHolder, position: Int) {
         val filmItem = getItem(position)
         holder.tvNameFilm.text = filmItem.name
         with(holder.ivIconFilm){
+            Log.d("glide","${filmItem.imageUrl}")
         Glide.with(this)
             .load(filmItem.imageUrl)
             .into(this)
