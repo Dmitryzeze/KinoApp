@@ -3,7 +3,7 @@ package com.example.myretrofit.data.network.model
 import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "full_film_list")
+
 data class FilmInfoDto(
     @SerializedName("filmId")
     val filmId: Int,

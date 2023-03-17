@@ -1,11 +1,12 @@
 package com.example.myretrofit.data.mapper
 
+import androidx.room.TypeConverter
 import com.example.myretrofit.data.database.FilmInfoDbModel
-import com.example.myretrofit.data.network.model.FilmGenreDto
 import com.example.myretrofit.data.network.model.FilmListInfoDto
 import com.example.myretrofit.domain.FilmInfo
 
 class FilmMapper {
+
     fun mapDtoToDbModel(dto: FilmListInfoDto): FilmInfoDbModel {
         return FilmInfoDbModel(
             id = dto.filmId,

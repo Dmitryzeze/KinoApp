@@ -1,15 +1,12 @@
 package com.example.myretrofit.presentation
 
-import android.os.Parcel
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.myretrofit.R
+import com.example.myretrofit.domain.FilmInfo
 
-class MainFragmentRVAdapter() : RecyclerView.Adapter<MainFragmentRVHolder>() {
-
-
+class MainFragmentRVAdapter : androidx.recyclerview.widget.ListAdapter<FilmInfo, MainFragmentRVHolder>(FilmInfoDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainFragmentRVHolder {
         val view = LayoutInflater.from(parent.context).inflate(
             R.layout.item_film_info,
@@ -24,6 +21,12 @@ class MainFragmentRVAdapter() : RecyclerView.Adapter<MainFragmentRVHolder>() {
     }
 
     override fun onBindViewHolder(holder: MainFragmentRVHolder, position: Int) {
-        TODO("Not yet implemented")
+        val filmItem = getItem(position)
+        holder.tvNameFilm.text = filmItem.name
+        with(holder.ivIconFilm){
+        Glide.with(this)
+            .load(filmItem.imageUrl)
+            .into(this)
+        }
     }
 }
