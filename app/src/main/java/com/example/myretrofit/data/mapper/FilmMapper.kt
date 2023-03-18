@@ -26,7 +26,7 @@ class FilmMapper {
             name = filmInfoDbModel.name,
             releaseYear = filmInfoDbModel.releaseYear,
             genres = filmInfoDbModel.genres,
-            imageUrl = filmInfoDbModel.releaseYear,
+            imageUrl = filmInfoDbModel.imageUrl,
             ratingKinopoisk = filmInfoDbModel.ratingKinopoisk,
             ratingImdb = filmInfoDbModel.ratingImdb
 

@@ -16,8 +16,8 @@ import kotlinx.coroutines.launch
 
 
 class MainFragment : Fragment() {
-    private lateinit var repository : FilmRepositoryImpl
-
+    private lateinit var repository: FilmRepositoryImpl
+    private lateinit var viewModel: FilmViewModel
     private lateinit var filmsListAdapter: MainFragmentRVAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,19 +34,24 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupRecycleView(view)
         repository = FilmRepositoryImpl(requireActivity().application)
+        viewModel = FilmViewModel(repository)
         lifecycleScope.launch {
             repository.loadData()
         }
-        setupRecycleView(view)
+        viewModel.films.observe(requireActivity()){
+            filmsListAdapter.submitList(it)
+        }
 
 
     }
-    private fun setupRecycleView(view: View){
+
+    private fun setupRecycleView(view: View) {
         val rvFilmList = view.findViewById<RecyclerView>(R.id.rv_films_list)
-        rvFilmList.layoutManager = GridLayoutManager(view.context,2)
+        rvFilmList.layoutManager = GridLayoutManager(view.context, 2)
         filmsListAdapter = MainFragmentRVAdapter()
-        with(rvFilmList){
+        with(rvFilmList) {
             adapter = filmsListAdapter
         }
 

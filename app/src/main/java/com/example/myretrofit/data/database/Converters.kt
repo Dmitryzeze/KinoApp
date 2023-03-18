@@ -7,7 +7,7 @@ import androidx.room.TypeConverters
 class Converters {
     @TypeConverter
     fun stringToList(string: String): List<String> {
-        return stringToList(string)
+        return string.split(",")
     }
 
     @TypeConverter
