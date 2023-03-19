@@ -1,12 +1,12 @@
 package com.example.myretrofit.data.database
 
 import android.app.Application
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
+import com.example.myretrofit.data.mapper.FilmMapper
 
 
-@Database(entities = [FilmInfoDbModel::class], version = 1, exportSchema = false)
+@Database(entities = [FilmInfoDbModel::class], version = 2, exportSchema = true)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun FilmInfoDao(): FilmInfoDao
 
@@ -27,7 +27,8 @@ abstract class AppDatabase : RoomDatabase() {
                     application,
                     AppDatabase::class.java,
                     DB_NAME
-                ).build()
+                ).fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = db
                 return db
 
