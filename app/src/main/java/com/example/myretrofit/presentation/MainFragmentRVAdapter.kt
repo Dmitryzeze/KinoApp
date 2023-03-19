@@ -30,7 +30,7 @@ class MainFragmentRVAdapter :
         val filmItem = getItem(position)
         holder.tvNameFilm.text = filmItem.name
         Log.d("textView", "${holder.tvNameFilm.text}")
-        with(holder.cardFilmInfo) {
+        with(holder.ivIconFilm) {
             Glide.with(this)
                 .load(filmItem.imageUrl)
                 .fitCenter()
