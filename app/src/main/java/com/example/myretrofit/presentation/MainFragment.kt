@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myretrofit.R
 import com.example.myretrofit.data.repository.FilmRepositoryImpl
+import com.example.myretrofit.presentation.di.AppComponent
 import kotlinx.coroutines.launch
 
 
