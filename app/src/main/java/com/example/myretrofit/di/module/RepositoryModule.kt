@@ -1,4 +1,4 @@
-package com.example.myretrofit.presentation.di.module
+package com.example.myretrofit.di.module
 
 import com.example.myretrofit.data.repository.FilmRepositoryImpl
 import com.example.myretrofit.domain.FilmRepository

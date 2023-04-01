@@ -7,8 +7,6 @@ import com.example.myretrofit.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var viewModel: FilmViewModel
-    private lateinit var repository: FilmRepositoryImpl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)

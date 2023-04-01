@@ -1,10 +1,8 @@
-package com.example.myretrofit.presentation.di
+package com.example.myretrofit.di
 
-import android.app.Application
 import android.content.Context
-import com.example.myretrofit.presentation.FilmViewModel
-import com.example.myretrofit.presentation.MainFragment
-import com.example.myretrofit.presentation.di.module.AppModule
+import com.example.myretrofit.presentation.main.MainFragment
+import com.example.myretrofit.di.module.AppModule
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
