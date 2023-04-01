@@ -1,16 +1,9 @@
-package com.example.myretrofit.presentation
+package com.example.myretrofit.presentation.main.rv
 
-import android.graphics.drawable.Drawable
-import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.TransformationUtils.fitCenter
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.target.SimpleTarget
-import com.bumptech.glide.request.transition.Transition
 import com.example.myretrofit.R
 import com.example.myretrofit.domain.FilmInfo
 

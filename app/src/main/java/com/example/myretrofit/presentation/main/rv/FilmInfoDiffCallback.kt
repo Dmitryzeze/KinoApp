@@ -1,4 +1,4 @@
-package com.example.myretrofit.presentation
+package com.example.myretrofit.presentation.main.rv
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.myretrofit.domain.FilmInfo

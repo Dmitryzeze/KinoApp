@@ -1,13 +1,12 @@
-package com.example.myretrofit.presentation
+package com.example.myretrofit.presentation.main.rv
 
 
-import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.View
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 
-class FilmIconCustomTarget (
+class FilmIconCustomTarget(
     private val view: View
 ) : CustomTarget<Drawable>() {
     override fun onResourceReady(

@@ -1,4 +1,4 @@
-package com.example.myretrofit.presentation
+package com.example.myretrofit.presentation.main.rv
 
 import android.view.View
 import android.widget.ImageView

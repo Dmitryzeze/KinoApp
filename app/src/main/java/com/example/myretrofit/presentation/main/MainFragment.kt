@@ -1,24 +1,49 @@
-package com.example.myretrofit.presentation
+package com.example.myretrofit.presentation.main
 
-import android.app.Activity
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myretrofit.R
-import com.example.myretrofit.data.repository.FilmRepositoryImpl
+import com.example.myretrofit.appComponent
+import com.example.myretrofit.databinding.FragmentMainBinding
+import com.example.myretrofit.presentation.main.rv.MainFragmentRVAdapter
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 class MainFragment : Fragment() {
-    private lateinit var repository: FilmRepositoryImpl
-    private lateinit var viewModel: FilmViewModel
-    private lateinit var filmsListAdapter: MainFragmentRVAdapter
+    private var _binding: FragmentMainBinding? = null
+    private val binding: FragmentMainBinding
+        get() = checkNotNull(_binding)
+
+    private lateinit var viewModelFactory: ViewModelProvider.Factory
+
+
+    @Inject
+    fun injection(
+        viewModelFactory: ViewModelProvider.Factory,
+        
+
+    ) {
+        this.viewModelFactory = viewModelFactory
+    }
+
+    private val viewModel : FilmViewModel by viewModels {viewModelFactory}
+    private val filmsListAdapter: MainFragmentRVAdapter by lazy {
+        MainFragmentRVAdapter() }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        requireActivity().appComponent.inject(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,12 +60,10 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecycleView(view)
-        repository = FilmRepositoryImpl(requireActivity().application)
-        viewModel = FilmViewModel(repository)
         lifecycleScope.launch {
-            repository.loadData()
+            viewModel.loadData()
         }
-        viewModel.films.observe(requireActivity()){
+        viewModel.films.observe(requireActivity()) {
             filmsListAdapter.submitList(it)
         }
 
@@ -50,7 +73,6 @@ class MainFragment : Fragment() {
     private fun setupRecycleView(view: View) {
         val rvFilmList = view.findViewById<RecyclerView>(R.id.rv_films_list)
         rvFilmList.layoutManager = GridLayoutManager(view.context, 2)
-        filmsListAdapter = MainFragmentRVAdapter()
         with(rvFilmList) {
             adapter = filmsListAdapter
         }
