@@ -7,5 +7,5 @@ interface FilmRepository {
 
     suspend fun getFilmInfo(idFilm: Int): FilmInfo
 
-    suspend fun loadData()
+    suspend fun loadFilmsFromServer(page: Int)
 }

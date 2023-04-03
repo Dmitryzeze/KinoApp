@@ -6,8 +6,18 @@ import com.example.myretrofit.data.network.model.FilmListInfoDto
 import com.example.myretrofit.domain.FilmInfo
 
 class FilmMapper {
-
-    fun mapDtoToDbModel(dto: FilmListInfoDto): FilmInfoDbModel {
+    fun mapDtoModelToEntity(dto: FilmListInfoDto): FilmInfo{
+        return FilmInfo(
+            id = dto.filmId,
+            name = dto.nameRu.orEmpty(),
+            releaseYear = dto.year.orEmpty(),
+            genres = dto.genres.map { it.genre },
+            imageUrl = dto.posterUrl.orEmpty(),
+            ratingKinopoisk = "",
+            ratingImdb = ""
+        )
+    }
+    private fun mapDtoModelToDbModel(dto: FilmListInfoDto): FilmInfoDbModel {
         return FilmInfoDbModel(
             id = dto.filmId,
             name = dto.nameRu.orEmpty(),
@@ -37,6 +47,9 @@ class FilmMapper {
     }
 
     fun mapListDtoModelToListDbModel(list: List<FilmListInfoDto>) = list.map {
-        mapDtoToDbModel(it)
+        mapDtoModelToDbModel(it)
+    }
+    fun mapListDtoModelToListEntity(list: List<FilmListInfoDto>) = list.map {
+        mapDtoModelToEntity(it)
     }
 }
