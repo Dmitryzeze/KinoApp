@@ -10,12 +10,14 @@ abstract class PaginationScrollListener(private val layoutManager: GridLayoutMan
         val visibleItemCount: Int = layoutManager.childCount
         val totalItemCount: Int = layoutManager.itemCount
         val firstVisibleItem = layoutManager.findFirstVisibleItemPosition()
-            if (visibleItemCount + firstVisibleItem >= totalItemCount && firstVisibleItem >= 0) {
-                loadMoreItems()
-            }
-
+        if (isLoaded&&visibleItemCount + firstVisibleItem >= totalItemCount && firstVisibleItem >= 0) {
+            isLoaded=false
+            loadMoreItems()
+            isLoaded=true
         }
 
+    }
+    var isLoaded : Boolean = true
     abstract fun loadMoreItems()
 
 }

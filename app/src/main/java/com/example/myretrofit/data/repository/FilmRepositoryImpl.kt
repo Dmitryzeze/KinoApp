@@ -2,7 +2,6 @@ package com.example.myretrofit.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.example.myretrofit.data.database.AppDatabase
 import com.example.myretrofit.data.database.FilmInfoDao
 import com.example.myretrofit.data.mapper.FilmMapper
 import com.example.myretrofit.data.network.ApiService
@@ -28,8 +27,9 @@ class FilmRepositoryImpl @Inject constructor(
     }
 
     override suspend fun loadData() {
-        val topFilmsListDto = apiService.getTopFilmInfoList()
+        for(page in 1..2 ){
+        val topFilmsListDto = apiService.getTopFilmInfoList(page)
         val filmListDb = mapper.mapListDtoModelToListDbModel(topFilmsListDto.films!!)
-        filmListDb.map { filmInfoDao.addFilmInfo(it) }
+        filmListDb.map { filmInfoDao.addFilmInfo(it) }}
     }
 }

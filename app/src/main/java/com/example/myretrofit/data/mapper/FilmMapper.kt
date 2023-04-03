@@ -9,6 +9,7 @@ class FilmMapper {
 
     fun mapDtoToDbModel(dto: FilmListInfoDto): FilmInfoDbModel {
         return FilmInfoDbModel(
+
             id = dto.filmId,
             name = dto.nameRu.orEmpty(),
             releaseYear = dto.year.orEmpty(),

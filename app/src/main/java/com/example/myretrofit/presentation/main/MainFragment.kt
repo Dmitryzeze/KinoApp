@@ -64,9 +64,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<RecyclerView>(R.id.rv_films_list).init()
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.loadData()
-        }
+
         viewModel.films.observe(requireActivity()) {
             filmsListAdapter.submitList(it)
         }
