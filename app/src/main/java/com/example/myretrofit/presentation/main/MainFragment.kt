@@ -15,6 +15,7 @@ import com.example.myretrofit.R
 import com.example.myretrofit.appComponent
 import com.example.myretrofit.databinding.FragmentMainBinding
 import com.example.myretrofit.presentation.main.rv.MainFragmentRVAdapter
+import com.example.myretrofit.presentation.main.rv.PaginationScrollListener
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,20 +31,22 @@ class MainFragment : Fragment() {
     @Inject
     fun injection(
         viewModelFactory: ViewModelProvider.Factory,
-        
 
-    ) {
+
+        ) {
         this.viewModelFactory = viewModelFactory
     }
 
-    private val viewModel : FilmViewModel by viewModels {viewModelFactory}
+    private val viewModel: FilmViewModel by viewModels { viewModelFactory }
     private val filmsListAdapter: MainFragmentRVAdapter by lazy {
-        MainFragmentRVAdapter() }
+        MainFragmentRVAdapter()
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         requireActivity().appComponent.inject(this)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -59,24 +62,26 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecycleView(view)
-        lifecycleScope.launch {
+        view.findViewById<RecyclerView>(R.id.rv_films_list).init()
+
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.loadData()
         }
         viewModel.films.observe(requireActivity()) {
             filmsListAdapter.submitList(it)
         }
 
-
     }
-
-    private fun setupRecycleView(view: View) {
-        val rvFilmList = view.findViewById<RecyclerView>(R.id.rv_films_list)
-        rvFilmList.layoutManager = GridLayoutManager(view.context, 2)
-        with(rvFilmList) {
-            adapter = filmsListAdapter
-        }
-
+    private fun RecyclerView.init() {
+        this.layoutManager = GridLayoutManager(this.context, 2)
+        this.adapter = filmsListAdapter
+        this.addOnScrollListener(object :
+            PaginationScrollListener(this@init.layoutManager as GridLayoutManager) {
+            override fun loadMoreItems() {
+                lifecycleScope.launch {
+                    viewModel.loadData()
+                }
+            }
+        })
     }
-
 }

@@ -17,6 +17,6 @@ class FilmIconCustomTarget(
     }
 
     override fun onLoadCleared(placeholder: Drawable?) {
-        TODO("Not yet implemented")
+       // TODO("Not yet implemented")
     }
 }
