@@ -2,14 +2,17 @@ package com.example.myretrofit.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.example.myretrofit.data.database.AppDatabase
 import com.example.myretrofit.data.database.FilmInfoDao
 import com.example.myretrofit.data.mapper.FilmMapper
 import com.example.myretrofit.data.network.ApiService
 import com.example.myretrofit.domain.FilmInfo
 import com.example.myretrofit.domain.FilmRepository
-import java.util.concurrent.Flow
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.*
+
+
 import javax.inject.Inject
+import kotlin.coroutines.suspendCoroutine
 
 class FilmRepositoryImpl @Inject constructor(
     private val filmInfoDao: FilmInfoDao,
@@ -22,10 +25,14 @@ class FilmRepositoryImpl @Inject constructor(
     private val map: Map<Int, List<FilmInfo>>
         get() = _map
 
-    override fun getFilmInfoList(): LiveData<List<FilmInfo>> =
-        Transformations.map(filmInfoDao.getFilmList()) {
+    override fun getFilmInfoList(): Flow<List<FilmInfo>> = flow {
+        filmInfoDao.getFilmList().map {
+            if (it.isEmpty()) {
+                loadFilmsFromServer()
+            }
             mapper.mapListDbModelToListEntity(it)
         }
+    }
 
 
     override suspend fun getFilmInfo(idFilm: Int): FilmInfo {
@@ -34,20 +41,23 @@ class FilmRepositoryImpl @Inject constructor(
 
     }
 
-    override suspend fun loadFilmsFromServer(page: Int) {
-        val topFilmsListDto = apiService.getTopFilmInfoList()
-        val filmListDb = mapper.mapListDtoModelToListDbModel(topFilmsListDto.films!!)
-        filmListDb.map { filmInfoDao.addFilmInfo(it) }
-    }
-    fun filmsFromServer(page: Int){
-
-    }
-
-    fun getFilms(page: Int): Flow<List<FilmInfo>> {
-        val result = map[page].orEmpty()
-        return if (result.isEmpty()) {
-            loadFilmsFromServer(page).map{}
-
+    override suspend fun loadFilmsFromServer() {
+        for (page in 1..13) {
+            val topFilmsListDto = apiService.getTopFilmInfoList(page)
+            val filmListDb = mapper.mapListDtoModelToListDbModel(topFilmsListDto.films)
+            filmListDb.map { filmInfoDao.addFilmInfo(it) }
         }
     }
+
+    override fun loadFilmsFromDb() {
+        TODO("Not yet implemented")
+    }
+
+
+//    fun getFilmsFromDb() {
+//        val result = map.orEmpty()
+//        return if (result.isEmpty()) {
+//
+//        } else loadFilmsFromServer()
+//    }
 }

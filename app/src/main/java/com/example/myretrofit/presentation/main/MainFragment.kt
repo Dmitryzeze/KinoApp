@@ -2,6 +2,7 @@ package com.example.myretrofit.presentation.main
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,10 +64,9 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<RecyclerView>(R.id.rv_films_list).init()
-
-
         viewModel.films.observe(requireActivity()) {
             filmsListAdapter.submitList(it)
+            Log.d("nullTable", "onViewCreated:$it ")
         }
 
     }
@@ -77,7 +77,6 @@ class MainFragment : Fragment() {
             PaginationScrollListener(this@init.layoutManager as GridLayoutManager) {
             override fun loadMoreItems() {
                 lifecycleScope.launch {
-                    viewModel.loadData()
                 }
             }
         })
