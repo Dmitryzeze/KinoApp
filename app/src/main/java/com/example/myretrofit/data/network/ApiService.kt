@@ -10,9 +10,10 @@ import retrofit2.http.Query
 interface ApiService {
     @GET("top")
     suspend fun getTopFilmInfoList(
+        @Query(QUERY_PARAM_PAGE_TOP) page : Int = 1,
         @Header(QUERY_PARAM_API_KEY) api_key: String = API_KEY,
-        @Query(QUERY_PARAM_TYPE_TOP) type: String = "TOP_250_BEST_FILMS",
-        @Query(QUERY_PARAM_PAGE_TOP) page : Int = 1
+        @Query(QUERY_PARAM_TYPE_TOP) type: String = "TOP_250_BEST_FILMS"
+
         ): FilmContainerDto
 
     companion object{

@@ -1,14 +1,13 @@
 package com.example.myretrofit.data.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
-import com.example.myretrofit.data.database.AppDatabase
+
 import com.example.myretrofit.data.database.FilmInfoDao
 import com.example.myretrofit.data.mapper.FilmMapper
 import com.example.myretrofit.data.network.ApiService
 import com.example.myretrofit.domain.FilmInfo
 import com.example.myretrofit.domain.FilmRepository
-import java.util.concurrent.Flow
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class FilmRepositoryImpl @Inject constructor(
@@ -22,8 +21,11 @@ class FilmRepositoryImpl @Inject constructor(
     private val map: Map<Int, List<FilmInfo>>
         get() = _map
 
-    override fun getFilmInfoList(): LiveData<List<FilmInfo>> =
-        Transformations.map(filmInfoDao.getFilmList()) {
+    override fun getFilmInfoList(): Flow<List<FilmInfo>> =
+        filmInfoDao.getFilmList().map {
+            if (it.isEmpty()) {
+                loadFilmsFromServer()
+            }
             mapper.mapListDbModelToListEntity(it)
         }
 
@@ -34,20 +36,11 @@ class FilmRepositoryImpl @Inject constructor(
 
     }
 
-    override suspend fun loadFilmsFromServer(page: Int) {
-        val topFilmsListDto = apiService.getTopFilmInfoList()
-        val filmListDb = mapper.mapListDtoModelToListDbModel(topFilmsListDto.films!!)
-        filmListDb.map { filmInfoDao.addFilmInfo(it) }
-    }
-    fun filmsFromServer(page: Int){
-
-    }
-
-    fun getFilms(page: Int): Flow<List<FilmInfo>> {
-        val result = map[page].orEmpty()
-        return if (result.isEmpty()) {
-            loadFilmsFromServer(page).map{}
-
+    override suspend fun loadFilmsFromServer() {
+        for (page in 1..13) {
+            val topFilmsListDto = apiService.getTopFilmInfoList(page)
+            val filmListDb = mapper.mapListDtoModelToListDbModel(topFilmsListDto.films)
+            filmListDb.map { filmInfoDao.addFilmInfo(it) }
         }
     }
 }

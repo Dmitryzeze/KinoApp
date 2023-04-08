@@ -1,8 +1,8 @@
 package com.example.myretrofit.di
 
 import android.content.Context
-import com.example.myretrofit.presentation.main.MainFragment
 import com.example.myretrofit.di.module.AppModule
+import com.example.myretrofit.presentation.main.MainFragment
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

@@ -2,7 +2,6 @@ package com.example.myretrofit.data.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.myretrofit.data.network.model.FilmGenreDto
 
 @Entity(tableName = "full_film_list")
 data class FilmInfoDbModel(

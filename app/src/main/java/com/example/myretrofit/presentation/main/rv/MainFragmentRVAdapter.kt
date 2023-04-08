@@ -1,9 +1,7 @@
 package com.example.myretrofit.presentation.main.rv
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
 import com.example.myretrofit.R
 import com.example.myretrofit.domain.FilmInfo
 
@@ -21,13 +19,6 @@ class MainFragmentRVAdapter :
 
     override fun onBindViewHolder(holder: MainFragmentRVHolder, position: Int) {
         val filmItem = getItem(position)
-        holder.tvNameFilm.text = filmItem.name
-        Log.d("textView", "${holder.tvNameFilm.text}")
-        with(holder.ivIconFilm) {
-            Glide.with(this)
-                .load(filmItem.imageUrl)
-                .fitCenter()
-                .into(FilmIconCustomTarget(this))
-        }
+        holder.bind(filmItem)
     }
 }

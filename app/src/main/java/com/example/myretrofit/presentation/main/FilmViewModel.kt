@@ -2,26 +2,28 @@ package com.example.myretrofit.presentation.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.myretrofit.data.repository.FilmRepositoryImpl
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.myretrofit.domain.FilmInfo
+import com.example.myretrofit.domain.FilmRepository
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 class FilmViewModel @Inject constructor(
-    private val filmsRepository: FilmRepositoryImpl
-    ) : ViewModel() {
+    private val filmsRepository: FilmRepository
+) : ViewModel() {
+
     val films: LiveData<List<FilmInfo>>
-        get() = filmsRepository.getFilmInfoList()
-    fun startListening(count: Int){
+        get() = filmsRepository.getFilmInfoList().asLiveData()
 
+    init {
+        viewModelScope.launch {
+            filmsRepository.loadFilmsFromServer()
+        }
     }
 
-    suspend fun  loadData(){
-        filmsRepository.loadData()
+    fun startListening(count: Int) {
+
     }
-
-
 }

@@ -1,7 +1,5 @@
 package com.example.myretrofit.domain
 
-import com.example.myretrofit.data.network.model.FilmGenreDto
-
 data class FilmInfo(
     val id: Int,
     val name: String,
