@@ -1,6 +1,5 @@
 package com.example.myretrofit.domain
 
-import androidx.lifecycle.LiveData
 import kotlinx.coroutines.flow.Flow
 
 interface FilmRepository {
@@ -9,6 +8,5 @@ interface FilmRepository {
     suspend fun getFilmInfo(idFilm: Int): FilmInfo
 
     suspend fun loadFilmsFromServer()
-    fun loadFilmsFromDb()
 
 }

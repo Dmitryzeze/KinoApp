@@ -1,16 +1,12 @@
 package com.example.myretrofit.presentation.main
 
-import androidx.lifecycle.*
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.example.myretrofit.data.repository.FilmRepositoryImpl
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.myretrofit.domain.FilmInfo
 import com.example.myretrofit.domain.FilmRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.delayFlow
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import okhttp3.Dispatcher
 import javax.inject.Inject
 
 

@@ -1,9 +1,7 @@
 package com.example.myretrofit.presentation.main.rv
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
 import com.example.myretrofit.R
 import com.example.myretrofit.domain.FilmInfo
 

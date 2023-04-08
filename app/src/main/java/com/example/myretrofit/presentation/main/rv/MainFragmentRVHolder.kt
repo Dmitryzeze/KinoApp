@@ -1,10 +1,8 @@
 package com.example.myretrofit.presentation.main.rv
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myretrofit.R
