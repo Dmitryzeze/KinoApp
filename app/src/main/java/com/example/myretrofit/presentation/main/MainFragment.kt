@@ -44,8 +44,8 @@ class MainFragment : Fragment() {
     }
 
     override fun onAttach(context: Context) {
-        super.onAttach(context)
         requireActivity().appComponent.inject(this)
+        super.onAttach(context)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,12 +64,13 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<RecyclerView>(R.id.rv_films_list).init()
-        viewModel.films.observe(requireActivity()) {
+        viewModel.films.observe(viewLifecycleOwner) {
             filmsListAdapter.submitList(it)
             Log.d("nullTable", "onViewCreated:$it ")
         }
 
     }
+
     private fun RecyclerView.init() {
         this.layoutManager = GridLayoutManager(this.context, 2)
         this.adapter = filmsListAdapter

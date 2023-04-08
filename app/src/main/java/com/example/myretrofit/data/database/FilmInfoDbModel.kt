@@ -6,8 +6,7 @@ import com.example.myretrofit.data.network.model.FilmGenreDto
 
 @Entity(tableName = "full_film_list")
 data class FilmInfoDbModel(
-    @PrimaryKey(autoGenerate = true)
-    val idBD: Int =0,
+    @PrimaryKey
     val id: Int,
     val name: String,
     val releaseYear: String?,

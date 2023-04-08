@@ -1,18 +1,15 @@
 package com.example.myretrofit.data.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
+
 import com.example.myretrofit.data.database.FilmInfoDao
 import com.example.myretrofit.data.mapper.FilmMapper
 import com.example.myretrofit.data.network.ApiService
 import com.example.myretrofit.domain.FilmInfo
 import com.example.myretrofit.domain.FilmRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.*
-
-
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
-import kotlin.coroutines.suspendCoroutine
 
 class FilmRepositoryImpl @Inject constructor(
     private val filmInfoDao: FilmInfoDao,
@@ -25,13 +22,13 @@ class FilmRepositoryImpl @Inject constructor(
     private val map: Map<Int, List<FilmInfo>>
         get() = _map
 
-    override fun getFilmInfoList(): Flow<List<FilmInfo>> = flow {
+    override fun getFilmInfoList(): Flow<List<FilmInfo>> =
         filmInfoDao.getFilmList().map {
             if (it.isEmpty()) {
                 loadFilmsFromServer()
             }
             mapper.mapListDbModelToListEntity(it)
-        }
+
     }
 
 
