@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 interface FilmRepository {
     fun getFilmInfoList(): Flow<List<FilmInfo>>
 
-    suspend fun getFilmInfo(idFilm: Int): FilmInfo
+    fun getFilmInfo(idFilm: Int): Flow<FilmInfo>
 
     suspend fun loadFilmsFromServer()
 

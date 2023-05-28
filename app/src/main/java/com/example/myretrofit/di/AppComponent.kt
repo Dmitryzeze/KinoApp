@@ -2,6 +2,7 @@ package com.example.myretrofit.di
 
 import android.content.Context
 import com.example.myretrofit.di.module.AppModule
+import com.example.myretrofit.presentation.film_info.FilmInfoFragment
 import com.example.myretrofit.presentation.main.MainFragment
 import dagger.BindsInstance
 import dagger.Component
@@ -18,5 +19,6 @@ interface AppComponent {
     }
 
     fun inject(fragment: MainFragment)
+    fun inject(fragment: FilmInfoFragment)
 
 }

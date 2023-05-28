@@ -18,5 +18,5 @@ interface FilmInfoDao {
     suspend fun deleteFilmInfo(filmId: Int)
 
     @Query("SELECT * FROM full_film_list WHERE id =:filmId LIMIT 1")
-    suspend fun getFilmInfo(filmId: Int): FilmInfoDbModel
+    fun getFilmInfo(filmId: Int): Flow<FilmInfoDbModel>
 }

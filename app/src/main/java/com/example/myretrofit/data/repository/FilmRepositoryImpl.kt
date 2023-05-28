@@ -30,11 +30,9 @@ class FilmRepositoryImpl @Inject constructor(
         }
 
 
-    override suspend fun getFilmInfo(idFilm: Int): FilmInfo {
-        val dbModel = filmInfoDao.getFilmInfo(idFilm)
-        return mapper.mapDbModelToEntity(dbModel)
+    override fun getFilmInfo(idFilm: Int): Flow<FilmInfo> =
+        filmInfoDao.getFilmInfo(idFilm).map { mapper.mapDbModelToEntity(it) }
 
-    }
 
     override suspend fun loadFilmsFromServer() {
         for (page in 1..13) {
