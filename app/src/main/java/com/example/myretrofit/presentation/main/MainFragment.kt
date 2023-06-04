@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myretrofit.R
@@ -47,6 +48,7 @@ class MainFragment : Fragment() {
         requireActivity().appComponent.inject(this)
         super.onAttach(context)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,7 +64,6 @@ class MainFragment : Fragment() {
             filmsListAdapter.submitList(it)
             Log.d("nullTable", "onViewCreated:$it ")
         }
-
     }
 
     private fun RecyclerView.init() {
@@ -75,5 +76,14 @@ class MainFragment : Fragment() {
                 }
             }
         })
+
+    }
+
+    private fun setupClickListener() {
+        filmsListAdapter.onShopItemClickListener = {
+
+            val action = MainFragmentDirections.actionMainFragmentToFilmInfoFragment(id)
+            findNavController().navigate(action)
+        }
     }
 }

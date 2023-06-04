@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.myretrofit.R
 import com.example.myretrofit.domain.FilmInfo
 
-class MainFragmentRVHolder(view: View) : RecyclerView.ViewHolder(view) {
+class MainFragmentRVHolder(val view: View) : RecyclerView.ViewHolder(view) {
     private val ivIconFilm: ImageView = view.findViewById(R.id.iv_icon_film)
     private val tvNameFilm: TextView = view.findViewById(R.id.tv_name_film)
 
