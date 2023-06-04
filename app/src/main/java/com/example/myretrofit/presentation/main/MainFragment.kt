@@ -2,7 +2,6 @@ package com.example.myretrofit.presentation.main
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,8 +61,8 @@ class MainFragment : Fragment() {
         view.findViewById<RecyclerView>(R.id.rv_films_list).init()
         viewModel.films.observe(viewLifecycleOwner) {
             filmsListAdapter.submitList(it)
-            Log.d("nullTable", "onViewCreated:$it ")
         }
+        setupClickListener()
     }
 
     private fun RecyclerView.init() {
@@ -75,13 +74,13 @@ class MainFragment : Fragment() {
                 lifecycleScope.launch {
                 }
             }
+
         })
 
     }
 
     private fun setupClickListener() {
         filmsListAdapter.onShopItemClickListener = {
-
             val action = MainFragmentDirections.actionMainFragmentToFilmInfoFragment(id)
             findNavController().navigate(action)
         }

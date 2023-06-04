@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavArgs
+import androidx.navigation.fragment.navArgs
 import com.example.myretrofit.R
 import com.example.myretrofit.appComponent
 import com.example.myretrofit.presentation.main.FilmViewModel
@@ -28,7 +30,7 @@ class FilmInfoFragment : Fragment() {
         this.viewModelFactory = viewModelFactory
     }
 
-    private val viewModel: FilmViewModel by viewModels { viewModelFactory }
+    private val viewModel: FilmInfoViewModel by viewModels { viewModelFactory }
     override fun onAttach(context: Context) {
         requireActivity().appComponent.inject(this)
         super.onAttach(context)
@@ -41,5 +43,14 @@ class FilmInfoFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_film_info, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        getFilmInfo()
 
+    }
+
+    private fun getFilmInfo() {
+        val args: FilmInfoFragmentArgs by navArgs()
+        viewModel.getFilmInfo(args.idFilmInfo)
+    }
 }

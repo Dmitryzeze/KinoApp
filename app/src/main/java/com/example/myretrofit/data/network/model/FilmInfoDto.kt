@@ -1,43 +1,96 @@
 package com.example.myretrofit.data.network.model
 
 import com.google.gson.annotations.SerializedName
+import java.util.Date
 
 
 data class FilmInfoDto(
     @SerializedName("kinopoiskId")
-    private val kinopoiskId: Int? = null,
+    var kinopoiskId: Int,
     @SerializedName("imdbId")
-    private val imdbId: String? = null,
+    var imdbId: String? = null,
     @SerializedName("nameRu")
-    private val nameRu: String? = null,
+    var nameRu: String? = null,
     @SerializedName("nameEn")
-    private val nameEn: String? = null,
+    var nameEn: String? = null,
     @SerializedName("nameOriginal")
-    private val nameOriginal: String? = null,
+    var nameOriginal: String? = null,
     @SerializedName("posterUrl")
-    private val posterUrl: String? = null,
+    var posterUrl: String? = null,
     @SerializedName("posterUrlPreview")
-    private val posterUrlPreview: String? = null,
+    var posterUrlPreview: String? = null,
     @SerializedName("coverUrl")
-    private val coverUrl: String? = null,
+    var coverUrl: String? = null,
     @SerializedName("logoUrl")
-    private val logoUrl: String? = null,
+    var logoUrl: String? = null,
     @SerializedName("reviewsCount")
-    private val reviewsCount: Int? = null,
+    var reviewsCount: Int? = null,
     @SerializedName("ratingGoodReview")
-    private val ratingGoodReview: Double? = null,
+    var ratingGoodReview: Double? = null,
     @SerializedName("ratingGoodReviewVoteCount")
-    private val ratingGoodReviewVoteCount: Int? = null,
+    var ratingGoodReviewVoteCount: Int? = null,
     @SerializedName("ratingKinopoisk")
-    private val ratingKinopoisk: Double? = null,
+    var ratingKinopoisk: Double? = null,
     @SerializedName("ratingKinopoiskVoteCount")
-    private val ratingKinopoiskVoteCount: Int? = null,
+    var ratingKinopoiskVoteCount: Int? = null,
     @SerializedName("ratingImdb")
-    private val ratingImdb: Double? = null,
+    var ratingImdb: Double? = null,
     @SerializedName("ratingImdbVoteCount")
-    private val ratingImdbVoteCount: Int? = null,
+    var ratingImdbVoteCount: Int? = null,
+    @SerializedName("ratingFilmCritics")
+    var ratingFilmCritics: Double? = null,
+    @SerializedName("ratingFilmCriticsVoteCount")
+    var ratingFilmCriticsVoteCount: Int? = null,
+    @SerializedName("ratingAwait")
+    var ratingAwait: Any? = null,
+    @SerializedName("ratingAwaitCount")
+    var ratingAwaitCount: Int? = null,
+    @SerializedName("ratingRfCritics")
+    var ratingRfCritics: Double? = null,
+    @SerializedName("ratingRfCriticsVoteCount")
+    var ratingRfCriticsVoteCount: Int? = null,
+    @SerializedName("webUrl")
+    var webUrl: String? = null,
+    @SerializedName("year")
+    var year: Int? = null,
+    @SerializedName("filmLength")
+    var filmLength: Int? = null,
+    @SerializedName("slogan")
+    var slogan: String? = null,
+    @SerializedName("description")
+    var description: String? = null,
+    @SerializedName("shortDescription")
+    var shortDescription: String? = null,
+    @SerializedName("editorAnnotation")
+    var editorAnnotation: Any? = null,
+    @SerializedName("isTicketsAvailable")
+    var isTicketsAvailable: Boolean? = null,
+    @SerializedName("productionStatus")
+    var productionStatus: Any? = null,
+    @SerializedName("type")
+    var type: String? = null,
+    @SerializedName("ratingMpaa")
+    var ratingMpaa: String? = null,
+    @SerializedName("ratingAgeLimits")
+    var ratingAgeLimits: String? = null,
     @SerializedName("countries")
-    val countries: List<FilmCountryDto>?,
+    var countries: ArrayList<FilmCountryDto>? = null,
     @SerializedName("genres")
-    val genres: List<FilmGenreDto>,
-    )
+    var genres: ArrayList<FilmGenreDto>? = null,
+    @SerializedName("startYear")
+    var startYear: Int? = null,
+    @SerializedName("endYear")
+    var endYear: Int? = null,
+    @SerializedName("serial")
+    var serial: Boolean? = null,
+    @SerializedName("shortFilm")
+    var shortFilm: Boolean? = null,
+    @SerializedName("completed")
+    var completed: Boolean? = null,
+    @SerializedName("hasImax")
+    var hasImax: Boolean? = null,
+    @SerializedName("has3D")
+    var has3D: Boolean? = null,
+    @SerializedName("lastSync")
+    var lastSync: Date? = null
+)
