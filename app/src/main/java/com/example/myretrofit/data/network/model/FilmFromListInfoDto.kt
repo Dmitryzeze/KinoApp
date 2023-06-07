@@ -1,9 +1,8 @@
 package com.example.myretrofit.data.network.model
 
-import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 
-data class FilmListInfoDto(
+data class FilmFromListInfoDto(
     @SerializedName("filmId")
     val filmId: Int,
     @SerializedName("nameRu")

@@ -4,7 +4,7 @@ import androidx.room.*
 
 
 @Database(
-    entities = [FilmInfoDbModel::class],
+    entities = [FilmOfListInfoDbModel::class],
     version = 1,
     exportSchema = false)
 @TypeConverters(Converters::class)

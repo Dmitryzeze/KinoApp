@@ -6,91 +6,89 @@ import java.util.Date
 
 data class FilmInfoDto(
     @SerializedName("kinopoiskId")
-    var kinopoiskId: Int,
+    val kinopoiskId: Int,
     @SerializedName("imdbId")
-    var imdbId: String? = null,
+    val imdbId: String? = null,
     @SerializedName("nameRu")
-    var nameRu: String? = null,
+    val nameRu: String? = null,
     @SerializedName("nameEn")
-    var nameEn: String? = null,
+    val nameEn: String? = null,
     @SerializedName("nameOriginal")
-    var nameOriginal: String? = null,
+    val nameOriginal: String? = null,
     @SerializedName("posterUrl")
-    var posterUrl: String? = null,
+    val posterUrl: String,
     @SerializedName("posterUrlPreview")
-    var posterUrlPreview: String? = null,
+    val posterUrlPreview: String,
     @SerializedName("coverUrl")
-    var coverUrl: String? = null,
+    val coverUrl: String? = null,
     @SerializedName("logoUrl")
-    var logoUrl: String? = null,
+    val logoUrl: String? = null,
     @SerializedName("reviewsCount")
-    var reviewsCount: Int? = null,
+    val reviewsCount: Int,
     @SerializedName("ratingGoodReview")
-    var ratingGoodReview: Double? = null,
+    val ratingGoodReview: Double? = null,
     @SerializedName("ratingGoodReviewVoteCount")
-    var ratingGoodReviewVoteCount: Int? = null,
+    val ratingGoodReviewVoteCount: Int? = null,
     @SerializedName("ratingKinopoisk")
-    var ratingKinopoisk: Double? = null,
+    val ratingKinopoisk: Double? = null,
     @SerializedName("ratingKinopoiskVoteCount")
-    var ratingKinopoiskVoteCount: Int? = null,
+    val ratingKinopoiskVoteCount: Int? = null,
     @SerializedName("ratingImdb")
-    var ratingImdb: Double? = null,
+    val ratingImdb: Double? = null,
     @SerializedName("ratingImdbVoteCount")
-    var ratingImdbVoteCount: Int? = null,
+    val ratingImdbVoteCount: Int? = null,
     @SerializedName("ratingFilmCritics")
-    var ratingFilmCritics: Double? = null,
+    val ratingFilmCritics: Double? = null,
     @SerializedName("ratingFilmCriticsVoteCount")
-    var ratingFilmCriticsVoteCount: Int? = null,
+    val ratingFilmCriticsVoteCount: Int? = null,
     @SerializedName("ratingAwait")
-    var ratingAwait: Any? = null,
+    val ratingAwait: Any? = null,
     @SerializedName("ratingAwaitCount")
-    var ratingAwaitCount: Int? = null,
+    val ratingAwaitCount: Int? = null,
     @SerializedName("ratingRfCritics")
-    var ratingRfCritics: Double? = null,
+    val ratingRfCritics: Double? = null,
     @SerializedName("ratingRfCriticsVoteCount")
-    var ratingRfCriticsVoteCount: Int? = null,
+    val ratingRfCriticsVoteCount: Int? = null,
     @SerializedName("webUrl")
-    var webUrl: String? = null,
+    val webUrl: String? = null,
     @SerializedName("year")
-    var year: Int? = null,
+    val year: Int? = null,
     @SerializedName("filmLength")
-    var filmLength: Int? = null,
+    val filmLength: Int? = null,
     @SerializedName("slogan")
-    var slogan: String? = null,
+    val slogan: String? = null,
     @SerializedName("description")
-    var description: String? = null,
+    val description: String? = null,
     @SerializedName("shortDescription")
-    var shortDescription: String? = null,
+    val shortDescription: String? = null,
     @SerializedName("editorAnnotation")
-    var editorAnnotation: Any? = null,
+    val editorAnnotation: Any? = null,
     @SerializedName("isTicketsAvailable")
-    var isTicketsAvailable: Boolean? = null,
-    @SerializedName("productionStatus")
-    var productionStatus: Any? = null,
+    val isTicketsAvailable: Boolean? = null,
     @SerializedName("type")
-    var type: String? = null,
+    val type: String,
     @SerializedName("ratingMpaa")
-    var ratingMpaa: String? = null,
+    val ratingMpaa: String? = null,
     @SerializedName("ratingAgeLimits")
-    var ratingAgeLimits: String? = null,
+    val ratingAgeLimits: String? = null,
     @SerializedName("countries")
-    var countries: ArrayList<FilmCountryDto>? = null,
+    val countries: List<FilmCountryDto>,
     @SerializedName("genres")
-    var genres: ArrayList<FilmGenreDto>? = null,
+    val genres: List<FilmGenreDto>,
     @SerializedName("startYear")
-    var startYear: Int? = null,
+    val startYear: Int? = null,
     @SerializedName("endYear")
-    var endYear: Int? = null,
+    val endYear: Int? = null,
     @SerializedName("serial")
-    var serial: Boolean? = null,
+    val serial: Boolean? = null,
     @SerializedName("shortFilm")
-    var shortFilm: Boolean? = null,
+    val shortFilm: Boolean? = null,
     @SerializedName("completed")
-    var completed: Boolean? = null,
+    val completed: Boolean? = null,
     @SerializedName("hasImax")
-    var hasImax: Boolean? = null,
+    val hasImax: Boolean? = null,
     @SerializedName("has3D")
-    var has3D: Boolean? = null,
+    val has3D: Boolean? = null,
     @SerializedName("lastSync")
-    var lastSync: Date? = null
+    val lastSync: Date? = null
 )

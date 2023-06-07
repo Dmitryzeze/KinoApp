@@ -4,15 +4,15 @@ import com.google.gson.annotations.SerializedName
 
 data class StaffFilmDto(
     @SerializedName("staffId")
-    private val staffId : Int,
+    val staffId: Int,
     @SerializedName("nameRu")
-    private val nameRu : String,
+    val nameRu: String?,
     @SerializedName("nameEn")
-    private val nameEn :String,
+    val nameEn: String?,
     @SerializedName("description")
-    private val description : String,
+    val description: String?,
     @SerializedName("posterUrl")
-    private val posterUrl : String,
+    val posterUrl: String,
     @SerializedName("professionKey")
-    private val professionKey : String
+    val professionKey: String
 )

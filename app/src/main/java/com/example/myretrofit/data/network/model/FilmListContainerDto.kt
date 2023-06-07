@@ -6,5 +6,5 @@ data class FilmListContainerDto (
     @SerializedName("pagesCount")
     val pagesCount: Int?,
     @SerializedName("films")
-    val films: List<FilmListInfoDto>
+    val films: List<FilmFromListInfoDto>
         )
