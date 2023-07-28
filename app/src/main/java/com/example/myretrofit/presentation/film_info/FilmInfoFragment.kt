@@ -51,6 +51,6 @@ class FilmInfoFragment : Fragment() {
 
     private fun getFilmInfo() {
         val args: FilmInfoFragmentArgs by navArgs()
-        viewModel.getFilmInfo(args.idFilmInfo)
+        viewModel.getFilmInfo(args.IdFilmInfo)
     }
 }

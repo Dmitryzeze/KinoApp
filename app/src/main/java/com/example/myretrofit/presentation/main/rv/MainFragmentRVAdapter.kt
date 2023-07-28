@@ -22,6 +22,7 @@ class MainFragmentRVAdapter :
         val filmItem = getItem(position)
         holder.bind(filmItem)
         holder.view.setOnClickListener {
+            onShopItemClickListener?.invoke(filmItem)
 
 
         }
