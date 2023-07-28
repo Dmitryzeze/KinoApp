@@ -2,10 +2,12 @@ package com.example.myretrofit.presentation.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.myretrofit.data.repository.FilmRepositoryImpl
 import javax.inject.Inject
+import javax.inject.Provider
 
-class ViewModelFactory @Inject constructor(private val filmsRepository: FilmRepositoryImpl) :
+class ViewModelFactory @Inject constructor(
+    private val viewModelMap: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
+) :
     ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
@@ -22,8 +24,5 @@ class ViewModelFactory @Inject constructor(private val filmsRepository: FilmRepo
         }
         return null
     }
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return FilmViewModel(filmsRepository) as T
-    }
+
 }
