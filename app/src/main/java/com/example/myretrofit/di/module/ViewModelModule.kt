@@ -1,5 +1,6 @@
 package com.example.myretrofit.di.module
 
+import androidx.lifecycle.ViewModel
 import com.example.myretrofit.di.ViewModelKey
 import com.example.myretrofit.presentation.film_info.FilmInfoViewModel
 import com.example.myretrofit.presentation.main.FilmViewModel
@@ -12,9 +13,9 @@ interface ViewModelModule {
     @IntoMap
     @Binds
     @ViewModelKey(FilmViewModel::class)
-    fun bindsFilmViewModel(viewModel: FilmViewModel): FilmViewModel
+    fun bindsFilmViewModel(viewModel: FilmViewModel): ViewModel
     @IntoMap
     @Binds
     @ViewModelKey(FilmInfoViewModel::class)
-    fun bindsFilmInfoViewModel(viewModel: FilmInfoViewModel):FilmInfoViewModel
+    fun bindsFilmInfoViewModel(viewModel: FilmInfoViewModel):ViewModel
 }

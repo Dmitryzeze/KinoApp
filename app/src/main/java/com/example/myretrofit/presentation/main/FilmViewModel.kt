@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
-class FilmViewModel @Inject constructor(
+class  FilmViewModel @Inject constructor(
     private val filmsRepository: FilmRepository
 ) : ViewModel() {
 
