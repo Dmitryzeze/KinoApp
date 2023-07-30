@@ -32,8 +32,6 @@ class MainFragment : Fragment() {
     @Inject
     fun injection(
         viewModelFactory: ViewModelProvider.Factory,
-
-
         ) {
         this.viewModelFactory = viewModelFactory
     }

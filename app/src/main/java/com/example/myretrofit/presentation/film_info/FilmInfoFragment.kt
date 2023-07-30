@@ -2,22 +2,25 @@ package com.example.myretrofit.presentation.film_info
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavArgs
 import androidx.navigation.fragment.navArgs
-import com.example.myretrofit.R
+import com.bumptech.glide.Glide
 import com.example.myretrofit.appComponent
-import com.example.myretrofit.presentation.main.FilmViewModel
+import com.example.myretrofit.databinding.FragmentFilmInfoBinding
+import com.example.myretrofit.presentation.main.rv.FilmIconCustomTarget
 import javax.inject.Inject
 
 
 class FilmInfoFragment : Fragment() {
-
+    private var _binding: FragmentFilmInfoBinding? = null
+    private val binding: FragmentFilmInfoBinding
+        get() = checkNotNull(_binding)
     private lateinit var viewModelFactory: ViewModelProvider.Factory
 
 
@@ -40,18 +43,25 @@ class FilmInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_film_info, container, false)
+        _binding = FragmentFilmInfoBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getFilmInfo()
-
+        setFilmInfoToScreen()
     }
 
-    private fun getFilmInfo() {
+
+    private fun setFilmInfoToScreen() {
         val args: FilmInfoFragmentArgs by navArgs()
-        viewModel.getFilmInfo(args.IdFilmInfo)
+        Log.d("log",args.IdFilmInfo.toString())
+        viewModel.getFilmInfo(args.IdFilmInfo).observe(
+            viewLifecycleOwner
+        ) {
+
+
+        }
     }
 }
