@@ -18,8 +18,8 @@ interface ApiService {
 
     @GET("film")
     suspend fun getFilmInfo(
-        @Header(QUERY_PARAM_API_KEY) api_key: String = API_KEY,
-        @Query(QUERY_PARAM_ID_FILM) id : Int
+        @Query(QUERY_PARAM_ID_FILM) id : Int,
+        @Header(QUERY_PARAM_API_KEY) api_key: String = API_KEY
     ): FilmInfoDto
 
     @GET("staff")

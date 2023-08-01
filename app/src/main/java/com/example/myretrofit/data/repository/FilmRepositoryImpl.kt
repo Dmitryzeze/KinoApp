@@ -5,6 +5,7 @@ import com.example.myretrofit.data.database.FilmInfoDao
 import com.example.myretrofit.data.mapper.FilmMapper
 import com.example.myretrofit.data.network.ApiService
 import com.example.myretrofit.domain.FilmFromListInfo
+import com.example.myretrofit.domain.FilmInfo
 import com.example.myretrofit.domain.FilmRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -30,8 +31,11 @@ class FilmRepositoryImpl @Inject constructor(
         }
 
 
-    override fun getFilmInfo(idFilm: Int): Flow<FilmFromListInfo> =
-        filmInfoDao.getFilmInfo(idFilm).map { mapper.mapDbModelToEntity(it) }
+    override suspend fun getFilmInfo(idFilm: Int): FilmInfo {
+        val filmInfoDto = apiService.getFilmInfo(idFilm)
+        return  mapper.mapDtoModelToEntity(filmInfoDto)
+    }
+
 
 
     override suspend fun loadFilmsFromServerToBd() {
