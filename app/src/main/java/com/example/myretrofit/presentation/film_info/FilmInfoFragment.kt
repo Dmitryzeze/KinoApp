@@ -56,10 +56,13 @@ class FilmInfoFragment : Fragment() {
 
     private fun setFilmInfoToScreen() {
         val args: FilmInfoFragmentArgs by navArgs()
-        Log.d("log",args.IdFilmInfo.toString())
         viewModel.getFilmInfo(args.IdFilmInfo).observe(
             viewLifecycleOwner
         ) {
+            Glide.with(binding.filmInfoPoster)
+                .load(it.imageUrl)
+                .centerCrop()
+                .into(FilmIconCustomTarget(binding.filmInfoPoster))
 
 
         }

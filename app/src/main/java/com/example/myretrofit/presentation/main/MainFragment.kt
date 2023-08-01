@@ -2,6 +2,7 @@ package com.example.myretrofit.presentation.main
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -79,7 +80,7 @@ class MainFragment : Fragment() {
 
     private fun setupClickListener() {
         filmsListAdapter.onShopItemClickListener = {
-            val action = MainFragmentDirections.actionMainFragmentToFilmInfoFragment(id)
+            val action = MainFragmentDirections.actionMainFragmentToFilmInfoFragment(it.id)
             findNavController().navigate(action)
         }
     }
