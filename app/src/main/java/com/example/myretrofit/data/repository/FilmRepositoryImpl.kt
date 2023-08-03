@@ -7,7 +7,9 @@ import com.example.myretrofit.data.network.ApiService
 import com.example.myretrofit.domain.FilmFromListInfo
 import com.example.myretrofit.domain.FilmInfo
 import com.example.myretrofit.domain.FilmRepository
+import com.example.myretrofit.domain.StaffFromFilm
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -31,9 +33,9 @@ class FilmRepositoryImpl @Inject constructor(
         }
 
 
-    override suspend fun getFilmInfo(idFilm: Int): FilmInfo {
+    override fun getFilmInfo(idFilm: Int): Flow<FilmInfo> = flow {
         val filmInfoDto = apiService.getFilmInfo(idFilm)
-        return  mapper.mapDtoModelToEntity(filmInfoDto)
+        emit( mapper.mapDtoModelToEntity(filmInfoDto))
     }
 
 
@@ -45,8 +47,9 @@ class FilmRepositoryImpl @Inject constructor(
             filmListDb.map { filmInfoDao.addFilmInfo(it) }
         }
     }
-
-    override fun loadStaffFilmFromServer(): Flow<FilmFromListInfo> {
-        TODO("Not yet implemented")
+    override fun loadStaffFilmFromServer(idFilm: Int): Flow<List<StaffFromFilm>> = flow{
+        val staffListFromFilmDto = apiService.getStaffFilm(idFilm)
+        val staffListFromFilmEntity = staffListFromFilmDto.staff.map{mapper.mapDtoModelToEntity(it)}
+        emit( staffListFromFilmEntity)
     }
 }

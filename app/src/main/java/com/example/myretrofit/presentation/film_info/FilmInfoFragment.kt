@@ -2,7 +2,6 @@ package com.example.myretrofit.presentation.film_info
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,7 +48,6 @@ class FilmInfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setFilmInfoToScreen()
     }
 
@@ -59,12 +57,26 @@ class FilmInfoFragment : Fragment() {
         viewModel.getFilmInfo(args.IdFilmInfo).observe(
             viewLifecycleOwner
         ) {
-            Glide.with(binding.filmInfoPoster)
-                .load(it.imageUrl)
-                .centerCrop()
-                .into(FilmIconCustomTarget(binding.filmInfoPoster))
+            with(binding) {
+                Glide.with(ivFilmInfoPoster)
+                    .load(it.posterUrl)
+                    .centerCrop()
+                    .into(FilmIconCustomTarget(ivFilmInfoPoster))
+                tvShortDescription.text = it.description
 
 
+            }
+
+        }
+        viewModel.getStaffFromFilm(args.IdFilmInfo).observe(
+            viewLifecycleOwner
+        ){
+            with(binding){
+                tvActor1.text = it[0].nameRu
+                tvActor1.text = it[1].nameRu
+                tvActor1.text = it[2].nameRu
+                tvActor1.text = it[3].nameRu
+            }
         }
     }
 }
