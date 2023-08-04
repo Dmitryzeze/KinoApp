@@ -2,6 +2,7 @@ package com.example.myretrofit.presentation.film_info
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -72,10 +73,15 @@ class FilmInfoFragment : Fragment() {
             viewLifecycleOwner
         ){
             with(binding){
+                Log.d("Staff",it.toString())
                 tvActor1.text = it[0].nameRu
-                tvActor1.text = it[1].nameRu
-                tvActor1.text = it[2].nameRu
-                tvActor1.text = it[3].nameRu
+                Log.d("Staff",it[0].toString())
+                tvActor2.text = it[1].nameRu
+                Log.d("Staff",it[1].toString())
+                tvActor3.text = it[2].nameRu
+                Log.d("Staff",it[2].toString())
+                tvActor4.text = it[3].nameRu
+                Log.d("Staff",it[3].toString())
             }
         }
     }

@@ -49,7 +49,7 @@ class FilmRepositoryImpl @Inject constructor(
     }
     override fun loadStaffFilmFromServer(idFilm: Int): Flow<List<StaffFromFilm>> = flow{
         val staffListFromFilmDto = apiService.getStaffFilm(idFilm)
-        val staffListFromFilmEntity = staffListFromFilmDto.staff.map{mapper.mapDtoModelToEntity(it)}
+        val staffListFromFilmEntity = staffListFromFilmDto.map{mapper.mapDtoModelToEntity(it)}
         emit( staffListFromFilmEntity)
     }
 }

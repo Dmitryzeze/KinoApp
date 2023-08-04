@@ -90,5 +90,5 @@ data class FilmInfoDto(
     @SerializedName("has3D")
     val has3D: Boolean? = null,
     @SerializedName("lastSync")
-    val lastSync: Date? = null
+    val lastSync: String? = null
 )
