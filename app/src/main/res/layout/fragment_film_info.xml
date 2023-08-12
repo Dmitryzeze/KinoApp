@@ -15,10 +15,12 @@
 
         <ImageView
             android:id="@+id/iv_film_info_poster"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             android:contentDescription="Poster"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/basepich" />
@@ -62,28 +64,28 @@
             app:layout_constraintTop_toBottomOf="@id/barrier" />
 
         <TextView
-            android:id="@+id/tv_actor_1"
+            android:id="@+id/tv_actor_name_1"
             style="@style/Actor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rayan Gosling" />
 
         <TextView
-            android:id="@+id/tv_actor_2"
+            android:id="@+id/tv_actor_name_2"
             style="@style/Actor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rayan Gosling" />
 
         <TextView
-            android:id="@+id/tv_actor_3"
+            android:id="@+id/tv_actor_name_3"
             style="@style/Actor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rayan Gosling" />
 
         <TextView
-            android:id="@+id/tv_actor_4"
+            android:id="@+id/tv_actor_name_4"
             style="@style/Actor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginStart="16dp"
-            app:constraint_referenced_ids="tv_actor_1,tv_actor_2,tv_actor_3,tv_actor_4"
+            app:constraint_referenced_ids="tv_actor_name_1,tv_actor_name_2,tv_actor_name_3,tv_actor_name_4"
             app:flow_horizontalBias="0"
             app:flow_horizontalGap="8dp"
             app:flow_horizontalStyle="packed"

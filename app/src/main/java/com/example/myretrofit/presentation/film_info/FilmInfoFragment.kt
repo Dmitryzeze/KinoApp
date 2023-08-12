@@ -61,7 +61,7 @@ class FilmInfoFragment : Fragment() {
             with(binding) {
                 Glide.with(ivFilmInfoPoster)
                     .load(it.posterUrl)
-                    .centerCrop()
+                    .fitCenter()
                     .into(FilmIconCustomTarget(ivFilmInfoPoster))
                 tvShortDescription.text = it.description
 
@@ -74,13 +74,13 @@ class FilmInfoFragment : Fragment() {
         ){
             with(binding){
                 Log.d("Staff",it.toString())
-                tvActor1.text = it[0].nameRu
+                tvActorName1.text = it[0].nameRu
                 Log.d("Staff",it[0].toString())
-                tvActor2.text = it[1].nameRu
+                tvActorName2.text = it[1].nameRu
                 Log.d("Staff",it[1].toString())
-                tvActor3.text = it[2].nameRu
+                tvActorName3.text = it[2].nameRu
                 Log.d("Staff",it[2].toString())
-                tvActor4.text = it[3].nameRu
+                tvActorName4.text = it[3].nameRu
                 Log.d("Staff",it[3].toString())
             }
         }
