@@ -61,7 +61,7 @@ class FilmInfoFragment : Fragment() {
             with(binding) {
                 Glide.with(ivFilmInfoPoster)
                     .load(it.posterUrl)
-                    .fitCenter()
+                    .centerInside()
                     .into(FilmIconCustomTarget(ivFilmInfoPoster))
                 tvShortDescription.text = it.description
 
