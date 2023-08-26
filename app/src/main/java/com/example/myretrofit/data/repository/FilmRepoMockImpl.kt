@@ -59,55 +59,18 @@ class FilmRepoMockImpl @Inject constructor(
     }
     override fun loadStaffFilmFromServer(idFilm: Int): Flow<List<StaffFromFilm>> =
         flow {
-            val staffListFromFilmEntity = mutableListOf<StaffFromFilm>()
-            staffListFromFilmEntity.add(
-                StaffFromFilm(
-                    1,
-                    "dima",
-                    "dima",
-                    "BEST",
-                    "www",
-                    "ACTOR",
-                    ProfessionKey.ACTOR
+            val staffListFromFilmEntity = Array(5){
+                index -> StaffFromFilm(
+                index,
+                "dima$index",
+                "dima",
+                "BEST",
+                "www",
+                "ACTOR",
+                ProfessionKey.ACTOR
                 )
-            )
-            staffListFromFilmEntity.add(
-                StaffFromFilm(
-                    2,
-                    "dima",
-                    "dima",
-                    "BEST",
-                    "www",
-                    "ACTOR",
-                    ProfessionKey.ACTOR
-                )
-
-            )
-            staffListFromFilmEntity.add(
-                StaffFromFilm(
-                    3,
-                    "dima",
-                    "dima",
-                    "BEST",
-                    "www",
-                    "ACTOR",
-                    ProfessionKey.ACTOR
-                )
-
-            )
-            staffListFromFilmEntity.add(
-                StaffFromFilm(
-                    4,
-                    "dima",
-                    "dima",
-                    "BEST",
-                    "www",
-                    "ACTOR",
-                    ProfessionKey.ACTOR
-                )
-
-            )
-            emit(staffListFromFilmEntity)
+            }.toList()
+            emit(staffListFromFilmEntity)}
         }
-}
+
 
