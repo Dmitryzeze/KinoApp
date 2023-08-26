@@ -41,7 +41,7 @@ class FilmRepoMockImpl @Inject constructor(
                 5.0,
                 "https://kinopoiskapiunofficial.tech/images/posters/kp/389.jpg",
                 2010,
-                "The best film in the world",
+                "The best film in the world dsjkgfjklsdagh jkfsdgjkfhsd akfhsdakfh jsdkljfh asdljkafh sdjklahfasd jkhsdjklhasdjklg hsdjklfg hsdajklfgsdhjkl hasdjkghasdjk fghasdkjfg hjklgasdghjkadsffghasdfjklghasdf jklgadsfgh jkasdfgh asdjkffgh asdfjkfhsdfjklasdhfgljkasdhfgjklasfv jkashgjkasdgh klajghasdv asdgasdfgasdfg dfsgfsdgdfgsdfgsdfgsdfgsdfgsdfgdfgsdfg",
                 "2",
                 "15",
                 listOf("rus"),

@@ -18,9 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:scaleType="fitXY"
             android:contentDescription="Poster"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -62,29 +60,25 @@
             android:id="@+id/tv_actor_name_1"
             style="@style/Actor"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rayan Gosling" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/tv_actor_name_2"
             style="@style/Actor"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rayan Gosling" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/tv_actor_name_3"
             style="@style/Actor"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rayan Gosling" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/tv_actor_name_4"
             style="@style/Actor"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rayan Gosling" />
+            android:layout_height="wrap_content" />
 
         <androidx.constraintlayout.helper.widget.Flow
             android:id="@+id/actors"
@@ -103,6 +97,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             />
+        <TextView
+            android:id="@+id/director_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/directors"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/actors" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

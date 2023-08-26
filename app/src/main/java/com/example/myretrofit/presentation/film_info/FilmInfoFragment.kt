@@ -13,7 +13,6 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.myretrofit.appComponent
 import com.example.myretrofit.databinding.FragmentFilmInfoBinding
-import com.example.myretrofit.presentation.main.rv.FilmIconCustomTarget
 import javax.inject.Inject
 
 
@@ -60,9 +59,9 @@ class FilmInfoFragment : Fragment() {
         ) {
             with(binding) {
                 Glide.with(ivFilmInfoPoster)
-                    .load(it.posterUrl)
-                    .centerInside()
-                    .into(FilmIconCustomTarget(ivFilmInfoPoster))
+                    .load("https://kinopoiskapiunofficial.tech/images/posters/kp/322.jpg")
+                    .fitCenter()
+                    .into(ivFilmInfoPoster)
                 tvShortDescription.text = it.description
 
 

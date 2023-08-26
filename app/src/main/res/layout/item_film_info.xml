@@ -13,6 +13,7 @@
     app:cardUseCompatPadding="true">
 
     <ImageView
+        android:scaleType="fitXY"
         android:id="@+id/iv_icon_film"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,17 +22,6 @@
         tools:src= "@drawable/ic_film"
         android:contentDescription="@string/icon_film" />
 
-    <TextView
-        android:id="@+id/tv_name_film"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="#80ffffff"
-        android:gravity="center"
-        android:text="@string/the_best_film"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.cardview.widget.CardView>
