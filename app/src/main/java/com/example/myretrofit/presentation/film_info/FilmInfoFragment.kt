@@ -11,6 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.example.myretrofit.R
 import com.example.myretrofit.appComponent
 import com.example.myretrofit.databinding.FragmentFilmInfoBinding
 import javax.inject.Inject
@@ -56,13 +58,16 @@ class FilmInfoFragment : Fragment() {
         val args: FilmInfoFragmentArgs by navArgs()
         viewModel.getFilmInfo(args.IdFilmInfo).observe(
             viewLifecycleOwner
-        ) {
+        ) {filmInfo ->
             with(binding) {
                 Glide.with(ivFilmInfoPoster)
-                    .load("https://kinopoiskapiunofficial.tech/images/posters/kp/322.jpg")
+                    .load(filmInfo.posterUrl)
+                    .placeholder(R.drawable.ic_film_icon)
+                    .error(R.drawable.ic_error_load_film_foreground)
+                    .transition(DrawableTransitionOptions.withCrossFade())
                     .fitCenter()
                     .into(ivFilmInfoPoster)
-                tvShortDescription.text = it.description
+                tvShortDescription.text = filmInfo.description
 
 
             }

@@ -1,5 +1,6 @@
 package com.example.myretrofit.data.repository
 
+import com.example.myretrofit.R
 import com.example.myretrofit.data.database.FilmInfoDao
 import com.example.myretrofit.data.mapper.FilmMapper
 import com.example.myretrofit.data.network.ApiService
@@ -65,7 +66,7 @@ class FilmRepoMockImpl @Inject constructor(
                 "dima$index",
                 "dima",
                 "BEST",
-                "www",
+                "R.drawable.basepich",
                 "ACTOR",
                 ProfessionKey.ACTOR
                 )
