@@ -1,6 +1,7 @@
 package com.example.myretrofit.presentation.film_info
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,7 +12,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.example.myretrofit.R
 import com.example.myretrofit.appComponent
 import com.example.myretrofit.databinding.FragmentFilmInfoBinding
@@ -58,7 +63,7 @@ class FilmInfoFragment : Fragment() {
         val args: FilmInfoFragmentArgs by navArgs()
         viewModel.getFilmInfo(args.IdFilmInfo).observe(
             viewLifecycleOwner
-        ) {filmInfo ->
+        ) { filmInfo ->
             with(binding) {
                 Glide.with(ivFilmInfoPoster)
                     .load(filmInfo.posterUrl)
@@ -75,17 +80,17 @@ class FilmInfoFragment : Fragment() {
         }
         viewModel.getStaffFromFilm(args.IdFilmInfo).observe(
             viewLifecycleOwner
-        ){
-            with(binding){
-                Log.d("Staff",it.toString())
+        ) {
+            with(binding) {
+                Log.d("Staff", it.toString())
                 tvActorName1.text = it[0].nameRu
-                Log.d("Staff",it[0].toString())
+                Log.d("Staff", it[0].toString())
                 tvActorName2.text = it[1].nameRu
-                Log.d("Staff",it[1].toString())
+                Log.d("Staff", it[1].toString())
                 tvActorName3.text = it[2].nameRu
-                Log.d("Staff",it[2].toString())
+                Log.d("Staff", it[2].toString())
                 tvActorName4.text = it[3].nameRu
-                Log.d("Staff",it[3].toString())
+                Log.d("Staff", it[3].toString())
             }
         }
     }
