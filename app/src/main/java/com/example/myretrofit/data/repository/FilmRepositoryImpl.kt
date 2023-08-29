@@ -17,8 +17,6 @@ class FilmRepositoryImpl @Inject constructor(
     private val filmInfoDao: FilmInfoDao,
     private val mapper: FilmMapper,
     private val apiService: ApiService
-
-
 ) : FilmRepository {
     private val _map = mutableMapOf<Int, List<FilmFromListInfo>>()
     private val map: Map<Int, List<FilmFromListInfo>>
@@ -32,13 +30,10 @@ class FilmRepositoryImpl @Inject constructor(
             mapper.mapListDbModelToListEntity(it)
         }
 
-
     override fun getFilmInfo(idFilm: Int): Flow<FilmInfo> = flow {
         val filmInfoDto = apiService.getFilmInfo(idFilm)
         emit( mapper.mapDtoModelToEntity(filmInfoDto))
     }
-
-
 
     override suspend fun loadFilmsFromServerToBd() {
         for (page in 1..13) {

@@ -2,6 +2,7 @@ package com.example.myretrofit.data.repository
 
 import com.example.myretrofit.R
 import com.example.myretrofit.data.database.FilmInfoDao
+import com.example.myretrofit.data.database.FilmOfListInfoDbModel
 import com.example.myretrofit.data.mapper.FilmMapper
 import com.example.myretrofit.data.network.ApiService
 import com.example.myretrofit.domain.FilmFromListInfo
@@ -25,10 +26,22 @@ class FilmRepoMockImpl @Inject constructor(
     private val map: Map<Int, List<FilmFromListInfo>>
         get() = _map
 
-    override fun getFilmInfoList(): Flow<List<FilmFromListInfo>> =
-        filmInfoDao.getFilmList().map {
-            mapper.mapListDbModelToListEntity(it)
-        }
+    override fun getFilmInfoList(): Flow<List<FilmFromListInfo>> = flow {
+
+        val listFilmInfo = Array(100) { id ->
+            FilmFromListInfo(
+                id,
+                "Film Name",
+                "1997",
+                listOf("com"),
+                "8.0",
+                "8.0",
+                "8.0"
+            )
+        }.toList()
+        emit(listFilmInfo)
+    }
+
 
     override fun getFilmInfo(idFilm: Int): Flow<FilmInfo> =
         flow {
@@ -47,7 +60,7 @@ class FilmRepoMockImpl @Inject constructor(
                 "15",
                 listOf("rus"),
                 listOf("serial"),
-                )
+            )
             emit(filmInfo)
         }
 
@@ -58,20 +71,22 @@ class FilmRepoMockImpl @Inject constructor(
             filmListDb.map { filmInfoDao.addFilmInfo(it) }
         }
     }
+
     override fun loadStaffFilmFromServer(idFilm: Int): Flow<List<StaffFromFilm>> =
         flow {
-            val staffListFromFilmEntity = Array(5){
-                index -> StaffFromFilm(
-                index,
-                "dima$index",
-                "dima",
-                "BEST",
-                "R.drawable.basepich",
-                "ACTOR",
-                ProfessionKey.ACTOR
+            val staffListFromFilmEntity = Array(5) { index ->
+                StaffFromFilm(
+                    index,
+                    "dima$index",
+                    "dima",
+                    "BEST",
+                    "R.drawable.basepich",
+                    "ACTOR",
+                    ProfessionKey.ACTOR
                 )
             }.toList()
-            emit(staffListFromFilmEntity)}
+            emit(staffListFromFilmEntity)
         }
+}
 
 
