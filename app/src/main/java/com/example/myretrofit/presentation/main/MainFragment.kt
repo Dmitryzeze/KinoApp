@@ -67,14 +67,6 @@ class MainFragment : Fragment() {
     private fun RecyclerView.init() {
         this.layoutManager = GridLayoutManager(this.context, 2)
         this.adapter = filmsListAdapter
-        this.addOnScrollListener(object :
-            PaginationScrollListener(this@init.layoutManager as GridLayoutManager) {
-            override fun loadMoreItems() {
-                lifecycleScope.launch {
-                }
-            }
-
-        })
 
     }
 

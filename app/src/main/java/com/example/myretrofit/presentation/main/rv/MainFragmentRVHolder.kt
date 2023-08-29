@@ -26,7 +26,7 @@ class MainFragmentRVHolder(val view: View) : RecyclerView.ViewHolder(view) {
         Glide.with(ivIconFilm)
             .load(filmItem.imageUrl)
             .fitCenter()
-            .placeholder(R.drawable.ic_film_icon)
+//            .placeholder(R.drawable.ic_film_icon)
             .error(R.drawable.ic_error_load_film_foreground)
             .transition(DrawableTransitionOptions.withCrossFade())
             .override(1000)
@@ -47,8 +47,8 @@ class MainFragmentRVHolder(val view: View) : RecyclerView.ViewHolder(view) {
                     dataSource: DataSource?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    piLoadFilm.isVisible = false
                     ivIconFilm.isVisible = true
+                    piLoadFilm.isVisible = false
                     return false
                 }
 

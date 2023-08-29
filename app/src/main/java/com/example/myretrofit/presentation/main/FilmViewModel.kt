@@ -17,13 +17,9 @@ class  FilmViewModel @Inject constructor(
     val films: LiveData<List<FilmFromListInfo>>
         get() = filmsRepository.getFilmInfoList().asLiveData()
 
-    init {
-        viewModelScope.launch {
-            filmsRepository.loadFilmsFromServerToBd()
-        }
-    }
-
-    fun startListening(count: Int) {
-
-    }
+//    init {
+//        viewModelScope.launch {
+//            filmsRepository.loadFilmsFromServerToBd()
+//        }
+//    }
 }
