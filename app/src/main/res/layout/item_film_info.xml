@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card_film_info"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_film_info"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
@@ -12,26 +12,24 @@
     app:cardCornerRadius="10dp"
     app:cardUseCompatPadding="true">
 
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/pi_film_load"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        app:indicatorSize="100dp" />
+
     <ImageView
+        android:visibility="invisible"
         android:id="@+id/iv_icon_film"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/icon_film"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:src= "@drawable/ic_film"
-        android:contentDescription="@string/icon_film" />
+        tools:src="@drawable/ic_film" />
 
-    <TextView
-        android:id="@+id/tv_name_film"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="#80ffffff"
-        android:gravity="center"
-        android:text="@string/the_best_film"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.cardview.widget.CardView>

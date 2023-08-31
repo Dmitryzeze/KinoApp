@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/posterImageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_film"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:elevation="4dp"
+        />
+
+    <TextView
+        android:id="@+id/titleTextView"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Название фильма"
+        android:textColor="@color/black"
+        android:layout_below="@id/posterImageView"
+        android:padding="16dp" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        style="@style/TextAppearance.MaterialComponents.Subtitle2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Краткое описание фильма"
+        android:textColor="@color/black"
+        android:layout_below="@id/titleTextView"
+        android:padding="16dp" />
+
+    <TextView
+        android:id="@+id/actorsTextView"
+        style="@style/TextAppearance.MaterialComponents.Subtitle2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Актеры"
+        android:textColor="@color/black"
+        android:layout_below="@id/descriptionTextView"
+        android:padding="16dp" />
+
+    <TextView
+        android:id="@+id/ratingTextView"
+        style="@style/TextAppearance.MaterialComponents.Subtitle2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Рейтинг Кинопоиска"
+        android:textColor="@color/black"
+        android:layout_below="@id/actorsTextView"
+        android:padding="16dp" />
+</RelativeLayout>

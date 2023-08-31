@@ -1,10 +1,10 @@
-package com.example.myretrofit.data.database
+package com.example.myretrofit.data.database.cache
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "full_film_list")
-data class FilmInfoDbModel(
+data class FilmOfListInfoDbModel(
     @PrimaryKey
     val id: Int,
     val name: String,

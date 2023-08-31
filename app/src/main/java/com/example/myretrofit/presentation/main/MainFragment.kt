@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myretrofit.R
@@ -32,8 +33,6 @@ class MainFragment : Fragment() {
     @Inject
     fun injection(
         viewModelFactory: ViewModelProvider.Factory,
-
-
         ) {
         this.viewModelFactory = viewModelFactory
     }
@@ -46,11 +45,6 @@ class MainFragment : Fragment() {
     override fun onAttach(context: Context) {
         requireActivity().appComponent.inject(this)
         super.onAttach(context)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -66,20 +60,20 @@ class MainFragment : Fragment() {
         view.findViewById<RecyclerView>(R.id.rv_films_list).init()
         viewModel.films.observe(viewLifecycleOwner) {
             filmsListAdapter.submitList(it)
-            Log.d("nullTable", "onViewCreated:$it ")
         }
-
+        setupClickListener()
     }
 
     private fun RecyclerView.init() {
         this.layoutManager = GridLayoutManager(this.context, 2)
         this.adapter = filmsListAdapter
-        this.addOnScrollListener(object :
-            PaginationScrollListener(this@init.layoutManager as GridLayoutManager) {
-            override fun loadMoreItems() {
-                lifecycleScope.launch {
-                }
-            }
-        })
+
+    }
+
+    private fun setupClickListener() {
+        filmsListAdapter.onShopItemClickListener = {
+            val action = MainFragmentDirections.actionMainFragmentToFilmInfoFragment(it.id)
+            findNavController().navigate(action)
+        }
     }
 }

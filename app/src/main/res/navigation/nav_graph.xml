@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.myretrofit.presentation.main.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_filmInfoFragment"
+            app:destination="@id/filmInfoFragment"
+            app:launchSingleTop="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/filmInfoFragment"
+        android:name="com.example.myretrofit.presentation.film_info.FilmInfoFragment"
+        android:label="fragment_film_info"
+        tools:layout="@layout/fragment_film_info" >
+        <argument
+            android:name="IdFilmInfo"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>

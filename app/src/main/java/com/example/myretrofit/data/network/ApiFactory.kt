@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiFactory {
 
-    private const val BASE_URL = "https://kinopoiskapiunofficial.tech/api/v2.2/films/"
+    private const val BASE_URL = "https://kinopoiskapiunofficial.tech/api/"
 
     private val httpLoggingInterceptor = HttpLoggingInterceptor()
         .apply { level = HttpLoggingInterceptor.Level.BODY }
