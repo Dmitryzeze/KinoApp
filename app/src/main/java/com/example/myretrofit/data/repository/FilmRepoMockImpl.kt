@@ -1,8 +1,6 @@
 package com.example.myretrofit.data.repository
 
-import com.example.myretrofit.R
-import com.example.myretrofit.data.database.FilmInfoDao
-import com.example.myretrofit.data.database.FilmOfListInfoDbModel
+import com.example.myretrofit.data.database.cache.FilmInfoDao
 import com.example.myretrofit.data.mapper.FilmMapper
 import com.example.myretrofit.data.network.ApiService
 import com.example.myretrofit.domain.FilmFromListInfo
@@ -12,7 +10,6 @@ import com.example.myretrofit.domain.ProfessionKey
 import com.example.myretrofit.domain.StaffFromFilm
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class FilmRepoMockImpl @Inject constructor(

@@ -1,6 +1,8 @@
 package com.example.myretrofit.data.database
 
 import androidx.room.*
+import com.example.myretrofit.data.database.cache.FilmInfoDao
+import com.example.myretrofit.data.database.cache.FilmOfListInfoDbModel
 
 
 @Database(

@@ -1,4 +1,4 @@
-package com.example.myretrofit.data.database
+package com.example.myretrofit.data.database.cache
 
 import androidx.room.Dao
 import androidx.room.Insert

@@ -1,7 +1,7 @@
 package com.example.myretrofit.data.repository
 
 
-import com.example.myretrofit.data.database.FilmInfoDao
+import com.example.myretrofit.data.database.cache.FilmInfoDao
 import com.example.myretrofit.data.mapper.FilmMapper
 import com.example.myretrofit.data.network.ApiService
 import com.example.myretrofit.domain.FilmFromListInfo

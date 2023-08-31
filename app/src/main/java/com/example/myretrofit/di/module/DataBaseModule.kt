@@ -3,8 +3,7 @@ package com.example.myretrofit.di.module
 import android.content.Context
 import androidx.room.Room
 import com.example.myretrofit.data.database.AppDatabase
-import com.example.myretrofit.data.database.BaseAppDatabase
-import com.example.myretrofit.data.database.FilmInfoDao
+import com.example.myretrofit.data.database.cache.FilmInfoDao
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -23,7 +22,7 @@ class DataBaseModule {
         .build()
 
     @Provides
-    fun provideForecastDao(db: AppDatabase):FilmInfoDao = db.filmInfoDao()
+    fun provideForecastDao(db: AppDatabase): FilmInfoDao = db.filmInfoDao()
 
 
 

@@ -1,5 +1,5 @@
 package com.example.myretrofit.data.mapper
-import com.example.myretrofit.data.database.FilmOfListInfoDbModel
+import com.example.myretrofit.data.database.cache.FilmOfListInfoDbModel
 import com.example.myretrofit.data.network.model.FilmFromListInfoDto
 import com.example.myretrofit.data.network.model.FilmInfoDto
 import com.example.myretrofit.data.network.model.StaffFilmDto
