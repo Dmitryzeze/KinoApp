@@ -1,6 +1,7 @@
 package com.example.myretrofit.data.repository
 
 
+import android.util.Log
 import com.example.myretrofit.data.database.cache.FilmInfoDao
 import com.example.myretrofit.data.database.favorite.FavoriteFilmListDao
 import com.example.myretrofit.data.mapper.FilmMapper
@@ -23,10 +24,15 @@ class FilmRepositoryImpl @Inject constructor(
     override fun getFilmInfoList(): Flow<List<FilmFromListInfo>> =
         filmInfoDao.getFilmList().map { listFilm ->
             if (listFilm.isEmpty()) {
-                loadFilmsFromServerToBd()
+                try {
+                    loadFilmsFromServerToBd()
+                } catch (e:Exception){
+                    Log.e(e.toString(), "KinoApp")
+                }
             }
             mapper.mapListDbModelToListEntity(listFilm).onEach { filmFromList ->
                 if (favoriteFilmListDao.getFilmInfo(filmFromList.id)) {
+                    Log.d("error133",favoriteFilmListDao.getFilmInfo(filmFromList.id).toString())
                     filmFromList.favoriteFlag = true
                 }
             }

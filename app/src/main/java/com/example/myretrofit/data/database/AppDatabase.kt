@@ -9,7 +9,7 @@ import com.example.myretrofit.data.database.favorite.FavoriteListFilmDbModel
 
 @Database(
     entities = [FilmOfListInfoDbModel::class,FavoriteListFilmDbModel::class],
-    version = 2,
+    version = 3,
     exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase(){

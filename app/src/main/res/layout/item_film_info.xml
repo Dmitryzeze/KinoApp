@@ -21,15 +21,27 @@
         app:indicatorSize="100dp" />
 
     <ImageView
-        android:visibility="invisible"
         android:id="@+id/iv_icon_film"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/icon_film"
         android:scaleType="fitXY"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:src="@drawable/ic_film" />
 
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <CheckBox
+        android:id="@+id/icon"
+        android:layout_gravity="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/sl_favourite_24dp"
+        app:buttonTint="#F44336" />
 
 </androidx.cardview.widget.CardView>

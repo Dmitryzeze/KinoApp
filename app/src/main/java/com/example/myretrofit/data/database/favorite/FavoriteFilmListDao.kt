@@ -18,5 +18,5 @@ interface FavoriteFilmListDao {
     suspend fun deleteFilmInfo(filmId: Int)
 
     @Query("SELECT EXISTS(SELECT * FROM favorite_film_list WHERE id =:filmId LIMIT 1)")
-    fun getFilmInfo(filmId: Int): Boolean
+    suspend fun getFilmInfo(filmId: Int): Boolean
 }
