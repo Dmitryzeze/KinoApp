@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.myretrofit.data.database.AppDatabase
 import com.example.myretrofit.data.database.cache.FilmInfoDao
+import com.example.myretrofit.data.database.favorite.FavoriteFilmListDao
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -23,6 +24,8 @@ class DataBaseModule {
 
     @Provides
     fun provideForecastDao(db: AppDatabase): FilmInfoDao = db.filmInfoDao()
+    @Provides
+    fun provideFavoriteFilmsDao(db: AppDatabase): FavoriteFilmListDao = db.favoriteFilmListDao()
 
 
 

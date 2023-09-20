@@ -7,6 +7,7 @@ data class FilmFromListInfo(
     val genres: List<String>?,
     val imageUrl: String?,
     val ratingKinopoisk: String?,
-    val ratingImdb: String?
+    val ratingImdb: String?,
+    var favoriteFlag: Boolean = false
         )
 

@@ -10,4 +10,5 @@ interface FilmRepository {
     suspend fun loadFilmsFromServerToBd()
 
     fun loadStaffFilmFromServer(idFilm: Int): Flow<List<StaffFromFilm>>
+
 }

@@ -11,6 +11,6 @@ import javax.inject.Singleton
 interface RepositoryModule {
     @Binds
     @Singleton
-    fun bindsFilmRepository (repository : FilmRepoMockImpl) : FilmRepository
+    fun bindsFilmRepository (repository : FilmRepositoryImpl) : FilmRepository
 
 }

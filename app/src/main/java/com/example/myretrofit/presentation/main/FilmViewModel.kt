@@ -16,6 +16,7 @@ class  FilmViewModel @Inject constructor(
 
     val films: LiveData<List<FilmFromListInfo>>
         get() = filmsRepository.getFilmInfoList().asLiveData()
+//    fun getFilmInfoFromDB(id : Int) = filmsRepository.
 
 //    init {
 //        viewModelScope.launch {

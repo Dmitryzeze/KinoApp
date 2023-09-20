@@ -2,6 +2,7 @@ package com.example.myretrofit.data.repository
 
 
 import com.example.myretrofit.data.database.cache.FilmInfoDao
+import com.example.myretrofit.data.database.favorite.FavoriteFilmListDao
 import com.example.myretrofit.data.mapper.FilmMapper
 import com.example.myretrofit.data.network.ApiService
 import com.example.myretrofit.domain.FilmFromListInfo
@@ -15,24 +16,36 @@ import javax.inject.Inject
 
 class FilmRepositoryImpl @Inject constructor(
     private val filmInfoDao: FilmInfoDao,
+    private val favoriteFilmListDao: FavoriteFilmListDao,
     private val mapper: FilmMapper,
     private val apiService: ApiService
 ) : FilmRepository {
-    private val _map = mutableMapOf<Int, List<FilmFromListInfo>>()
-    private val map: Map<Int, List<FilmFromListInfo>>
-        get() = _map
-
     override fun getFilmInfoList(): Flow<List<FilmFromListInfo>> =
-        filmInfoDao.getFilmList().map {
-            if (it.isEmpty()) {
+        filmInfoDao.getFilmList().map { listFilm ->
+            if (listFilm.isEmpty()) {
                 loadFilmsFromServerToBd()
             }
+            mapper.mapListDbModelToListEntity(listFilm).onEach { filmFromList ->
+                if (favoriteFilmListDao.getFilmInfo(filmFromList.id)) {
+                    filmFromList.favoriteFlag = true
+                }
+            }
+        }
+
+    fun getFavoriteFilmsList(): Flow<List<FilmFromListInfo>> =
+        favoriteFilmListDao.getFilmList().map {
             mapper.mapListDbModelToListEntity(it)
+                .onEach { filmFromListInfo -> filmFromListInfo.favoriteFlag = true }
         }
 
     override fun getFilmInfo(idFilm: Int): Flow<FilmInfo> = flow {
         val filmInfoDto = apiService.getFilmInfo(idFilm)
-        emit( mapper.mapDtoModelToEntity(filmInfoDto))
+        emit(mapper.mapDtoModelToEntity(filmInfoDto))
+    }
+
+    fun getFilmInfoFromDB(idFilm: Int): Flow<FilmFromListInfo> = flow {
+        val filmInfoDB = filmInfoDao.getFilmInfo(idFilm)
+        emit(mapper.mapDbModelToEntity(filmInfoDB))
     }
 
     override suspend fun loadFilmsFromServerToBd() {
@@ -42,9 +55,10 @@ class FilmRepositoryImpl @Inject constructor(
             filmListDb.map { filmInfoDao.addFilmInfo(it) }
         }
     }
-    override fun loadStaffFilmFromServer(idFilm: Int): Flow<List<StaffFromFilm>> = flow{
+
+    override fun loadStaffFilmFromServer(idFilm: Int): Flow<List<StaffFromFilm>> = flow {
         val staffListFromFilmDto = apiService.getStaffFilm(idFilm)
-        val staffListFromFilmEntity = staffListFromFilmDto.map{mapper.mapDtoModelToEntity(it)}
-        emit( staffListFromFilmEntity)
+        val staffListFromFilmEntity = staffListFromFilmDto.map { mapper.mapDtoModelToEntity(it) }
+        emit(staffListFromFilmEntity)
     }
 }

@@ -75,7 +75,6 @@ class FilmMapper {
             imageUrl = filmInfoDbModel.imageUrl,
             ratingKinopoisk = filmInfoDbModel.ratingKinopoisk,
             ratingImdb = filmInfoDbModel.ratingImdb
-
         )
 
     fun mapListDbModelToListEntity(list: List<FilmOfListInfoDbModel>) = list.map {
