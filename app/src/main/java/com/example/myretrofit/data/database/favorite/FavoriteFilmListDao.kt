@@ -12,11 +12,11 @@ interface FavoriteFilmListDao {
     fun getFilmList(): Flow<List<FilmOfListInfoDbModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addFilmInfo(shopItemDbModel: FavoriteListFilmDbModel)
+    suspend fun addFilmInfo(favoriteFilmDbModel: FavoriteFilmFromListDbModel)
 
     @Query("DELETE FROM favorite_film_list WHERE id =:filmId")
     suspend fun deleteFilmInfo(filmId: Int)
 
     @Query("SELECT EXISTS(SELECT * FROM favorite_film_list WHERE id =:filmId LIMIT 1)")
-    suspend fun getFilmInfo(filmId: Int): Boolean
+    fun getFilmInfo(filmId: Int):  Flow<Boolean>
 }

@@ -2,6 +2,7 @@ package com.example.myretrofit.presentation.main.rv
 
 import android.graphics.drawable.Drawable
 import android.view.View
+import android.widget.CheckBox
 import android.widget.ImageView
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -17,16 +18,16 @@ import com.example.myretrofit.domain.FilmFromListInfo
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class MainFragmentRVHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    val checkBox: CheckBox = view.findViewById(R.id.icon)
     private val piLoadFilm: CircularProgressIndicator = view.findViewById(R.id.pi_film_load)
     private val ivIconFilm: ImageView = view.findViewById(R.id.iv_icon_film)
 
 
     fun bind(filmItem: FilmFromListInfo) {
-
+        checkBox.isChecked = filmItem.favoriteFlag
         Glide.with(ivIconFilm)
             .load(filmItem.imageUrl)
             .fitCenter()
-//            .placeholder(R.drawable.ic_film_icon)
             .error(R.drawable.ic_error_load_film_foreground)
             .transition(DrawableTransitionOptions.withCrossFade())
             .override(1000)

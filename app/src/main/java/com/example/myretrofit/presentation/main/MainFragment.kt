@@ -2,7 +2,6 @@ package com.example.myretrofit.presentation.main
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,6 @@ import com.example.myretrofit.R
 import com.example.myretrofit.appComponent
 import com.example.myretrofit.databinding.FragmentMainBinding
 import com.example.myretrofit.presentation.main.rv.MainFragmentRVAdapter
-import com.example.myretrofit.presentation.main.rv.PaginationScrollListener
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -71,7 +69,12 @@ class MainFragment : Fragment() {
     }
 
     private fun setupClickListener() {
-        filmsListAdapter.onShopItemClickListener = {
+        filmsListAdapter.onLikedFilmClickListener = {film ->
+            if (film.favoriteFlag)
+                viewModel.deleteFilmFromFavorite(film)
+            else viewModel.addFilmToFavorite(film)
+        }
+        filmsListAdapter.onFilmItemClickListener = {
             val action = MainFragmentDirections.actionMainFragmentToFilmInfoFragment(it.id)
             findNavController().navigate(action)
         }

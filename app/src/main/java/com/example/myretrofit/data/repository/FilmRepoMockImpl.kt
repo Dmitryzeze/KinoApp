@@ -23,6 +23,14 @@ class FilmRepoMockImpl @Inject constructor(
     private val map: Map<Int, List<FilmFromListInfo>>
         get() = _map
 
+    override suspend fun deleteFilmFromFavorite(filmFromList: FilmFromListInfo) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun addFilmToFavorite(filmFromList: FilmFromListInfo) {
+        TODO("Not yet implemented")
+    }
+
     override fun getFilmInfoList(): Flow<List<FilmFromListInfo>> = flow {
 
         val listFilmInfo = Array(100) { id ->

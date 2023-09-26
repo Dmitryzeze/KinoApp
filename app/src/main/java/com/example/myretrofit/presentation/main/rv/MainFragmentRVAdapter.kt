@@ -7,7 +7,8 @@ import com.example.myretrofit.domain.FilmFromListInfo
 
 class MainFragmentRVAdapter :
     androidx.recyclerview.widget.ListAdapter<FilmFromListInfo, MainFragmentRVHolder>(FilmInfoDiffCallback()) {
-    var onShopItemClickListener: ((FilmFromListInfo)-> Unit)? = null
+    var onFilmItemClickListener: ((FilmFromListInfo)-> Unit)? = null
+    var onLikedFilmClickListener: ((FilmFromListInfo)-> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainFragmentRVHolder {
         val view = LayoutInflater.from(parent.context).inflate(
             R.layout.item_film_info,
@@ -22,9 +23,14 @@ class MainFragmentRVAdapter :
         val filmItem = getItem(position)
         holder.bind(filmItem)
         holder.view.setOnClickListener {
-            onShopItemClickListener?.invoke(filmItem)
-
-
+            onFilmItemClickListener?.invoke(filmItem)
+        }
+        holder.checkBox.setOnClickListener{
+            onLikedFilmClickListener?.invoke(filmItem)
         }
     }
 }
+
+
+
+

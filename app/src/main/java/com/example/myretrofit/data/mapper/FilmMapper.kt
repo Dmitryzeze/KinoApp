@@ -1,5 +1,6 @@
 package com.example.myretrofit.data.mapper
 import com.example.myretrofit.data.database.cache.FilmOfListInfoDbModel
+import com.example.myretrofit.data.database.favorite.FavoriteFilmFromListDbModel
 import com.example.myretrofit.data.network.model.FilmFromListInfoDto
 import com.example.myretrofit.data.network.model.FilmInfoDto
 import com.example.myretrofit.data.network.model.StaffFilmDto
@@ -88,4 +89,14 @@ class FilmMapper {
     fun mapListDtoModelToListEntity(list: List<FilmFromListInfoDto>) = list.map {
         mapDtoModelToEntity(it)
     }
+    fun mapEntityToDto(filmFromListInfo: FilmFromListInfo): FavoriteFilmFromListDbModel=
+        FavoriteFilmFromListDbModel(
+            id = filmFromListInfo.id,
+            name = filmFromListInfo.name,
+            releaseYear = filmFromListInfo.releaseYear,
+            genres = filmFromListInfo.genres,
+            imageUrl = filmFromListInfo.imageUrl,
+            ratingKinopoisk = filmFromListInfo.ratingKinopoisk,
+            ratingImdb = filmFromListInfo.ratingImdb
+        )
 }
